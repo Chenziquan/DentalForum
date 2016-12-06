@@ -18,9 +18,6 @@
             android:layout_height="match_parent"
             android:layout="@layout/network_error" />
 
-        <include layout="@layout/network_error" />
-
-
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recommend_recycler"
             android:layout_width="match_parent"
