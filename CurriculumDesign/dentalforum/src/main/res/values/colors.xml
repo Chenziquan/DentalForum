@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="them_color">#FB7050</color>
+
+    <color name="text_color_4d">#4d4d4d</color>
+    <color name="text_color_66">#666666</color>
+    <color name="text_color_80">#808080</color>
+    <color name="text_color_99">#999999</color>
+    <color name="text_color_cc">#cccccc</color>
+
+    <color name="home_tab_unselect">#FD9F8A</color>
+
+    <color name="them_bg_color">#F8F8F8</color>
+
+    <!--分割线颜色-->
+    <color name="split_color">#CDCDCD</color>
+
+    <color name="login_submit_color">#3EC234</color>
+
+    <color name="navigatesigin_color">#74BFF3</color>
+
+
+</resources>

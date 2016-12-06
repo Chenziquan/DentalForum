@@ -1,0 +1,73 @@
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/them_bg_color"
+    android:padding="@dimen/activity_horizontal_margin"
+    tools:context="jqchen.dentalforum.register.RegisterNextFragment">
+
+    <ViewStub
+        android:id="@+id/network_error_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout="@layout/network_error"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register_next_a"
+            android:textColor="@color/text_color_80"
+            android:textSize="@dimen/sp_12" />
+
+        <TextView
+            android:id="@+id/register_next_tel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color_80"
+            android:textSize="@dimen/sp_12" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_14"
+        android:gravity="center_vertical">
+
+        <EditText
+            android:id="@+id/register_next_code"
+            style="@style/frame_edittext"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_36"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:hint="@string/input_code_hint"
+            android:background="@drawable/corner_bg_dp_4" />
+
+        <TextView
+            android:id="@+id/register_next_send"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_36"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:textSize="@dimen/sp_12"
+            android:text="@string/send_code"
+            android:textColor="@color/text_color_4d"
+            android:background="@drawable/corner_bg_dp_4"
+            tools:ignore="RtlHardcoded" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/register_next_submit"
+        style="@style/frame_submit"
+        android:textColor="@android:color/white"
+        android:text="@string/register_submit"
+        android:layout_marginTop="@dimen/dp_40"
+        android:background="@drawable/login_submit_bg" />
+
+</android.support.v7.widget.LinearLayoutCompat>

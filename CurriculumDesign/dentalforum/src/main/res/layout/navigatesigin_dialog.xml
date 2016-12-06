@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.LinearLayoutCompat
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:orientation="vertical"
+        app:divider="@drawable/divider_vertical"
+        app:showDividers="middle">
+
+        <TextView
+            android:id="@+id/navigationsigin_qq"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_36"
+            android:gravity="center_vertical"
+            android:text="@string/navigatesigin_qq"
+            android:textColor="@color/text_color_4d"
+            android:textSize="@dimen/sp_13" />
+
+        <TextView
+            android:id="@+id/navigationsigin_sina"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_36"
+            android:gravity="center_vertical"
+            android:text="@string/navigatesigin_sina"
+            android:textColor="@color/text_color_4d"
+            android:textSize="@dimen/sp_13" />
+
+        <TextView
+            android:id="@+id/navigationsigin_wechat"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_36"
+            android:gravity="center_vertical"
+            android:text="@string/navigatesigin_wechat"
+            android:textColor="@color/text_color_4d"
+            android:textSize="@dimen/sp_13" />
+    </android.support.v7.widget.LinearLayoutCompat>
+</android.support.v4.widget.NestedScrollView>

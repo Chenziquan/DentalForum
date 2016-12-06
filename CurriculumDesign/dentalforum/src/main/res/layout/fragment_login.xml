@@ -1,0 +1,90 @@
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/them_bg_color"
+    tools:context="jqchen.dentalforum.login.LoginFragment">
+
+    <ViewStub
+        android:id="@+id/network_error_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout="@layout/network_error" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_horizontal_margin">
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/corner_bg_dp_4"
+                android:orientation="vertical"
+                app:divider="@drawable/divider_vertical"
+                app:showDividers="middle">
+
+                <jqchen.dentalforum.widget.ClearableEditText
+                    android:id="@+id/login_username"
+                    style="@style/frame_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edittext_height"
+                    android:layout_margin="@dimen/dp_4"
+                    android:background="@android:color/white"
+                    android:hint="@string/login_username" />
+
+                <jqchen.dentalforum.widget.ClearableEditText
+                    android:id="@+id/login_password"
+                    style="@style/frame_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edittext_height"
+                    android:layout_margin="@dimen/dp_4"
+                    android:background="@android:color/white"
+                    android:hint="@string/login_password"
+                    android:inputType="textPassword" />
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_22">
+
+                <!--<TextView
+                    android:id="@+id/login_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/login_register"
+                    android:textColor="@color/text_color_4d"
+                    android:textSize="@dimen/sp_12" />-->
+
+                <TextView
+                    android:id="@+id/login_forget"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/login_forget"
+                    android:textColor="@color/text_color_4d"
+                    android:textSize="@dimen/sp_12" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/login_submit"
+                style="@style/frame_submit"
+                android:layout_marginTop="@dimen/dp_36"
+                android:background="@drawable/login_submit_bg"
+                android:text="@string/login_title"
+                android:textColor="@android:color/white" />
+
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.v7.widget.LinearLayoutCompat>

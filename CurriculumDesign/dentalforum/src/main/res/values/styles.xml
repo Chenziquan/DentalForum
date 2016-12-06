@@ -1,0 +1,67 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/them_color</item>
+        <item name="colorPrimaryDark">@color/them_color</item>
+        <item name="colorAccent">@color/them_color</item>
+        <item name="android:navigationBarColor">@color/them_color</item>
+    </style>
+
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="WhiteBarThem.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="frame_title">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:layout_centerInParent">true</item>
+    </style>
+
+    <style name="frame_back">
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:src">@drawable/white_black</item>
+    </style>
+
+    <style name="frame_toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
+    </style>
+
+    <style name="frame_edittext">
+        <item name="android:textColor">@color/text_color_4d</item>
+        <item name="android:textColorHint">@color/text_color_cc</item>
+        <item name="android:textSize">@dimen/sp_13</item>
+        <item name="android:paddingLeft">@dimen/dp_4</item>
+        <item name="android:paddingRight">@dimen/dp_4</item>
+    </style>
+
+    <style name="frame_submit">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_36</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+    </style>
+
+    <style name="CustomDialog" parent="android:style/Theme.Dialog">
+
+        <!-- 背景颜色及透明程度 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 是否有标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否模糊 -->
+        <item name="android:animation">@anim/push_buttom_in</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+</resources>
