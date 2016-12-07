@@ -24,11 +24,12 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     protected void addFragment(BaseFragment fragment) {
         if (fragment != null) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(getFragmentContentId(), fragment, fragment.getClass().getSimpleName())
+                    .add(getFragmentContentId(), fragment, fragment.getClass().getSimpleName())
                     .addToBackStack(fragment.getClass().getSimpleName())
                     .commitAllowingStateLoss();
         }
     }
+
 
     //移除fragment
     protected void removeFragment() {
@@ -45,6 +46,9 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         if (KeyEvent.KEYCODE_BACK == keyCode) {
             if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
                 finish();
+                return true;
+            }else {
+                removeFragment();
                 return true;
             }
         }

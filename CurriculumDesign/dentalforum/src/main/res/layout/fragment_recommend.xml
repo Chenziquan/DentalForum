@@ -1,5 +1,4 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,20 +6,22 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <LinearLayout
+    <ViewStub
+        android:id="@+id/network_error_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout="@layout/network_error" />
 
-        <ViewStub
-            android:id="@+id/network_error_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout="@layout/network_error" />
+    <cn.bingoogolapple.refreshlayout.BGARefreshLayout
+        android:id="@+id/recommend_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recommend_recycler"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:overScrollMode="never" />
+
+    </cn.bingoogolapple.refreshlayout.BGARefreshLayout>
 </FrameLayout>

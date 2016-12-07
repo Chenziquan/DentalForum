@@ -24,4 +24,9 @@ public class LocalRecommendDataSource implements RecommendDataSource {
     public void getRecommend(LoadRecommendCallback callback) {
         getRecommend(1, 10, callback);
     }
+
+    @Override
+    public void getBanner(LoadRecommendCallback callback) {
+
+    }
 }

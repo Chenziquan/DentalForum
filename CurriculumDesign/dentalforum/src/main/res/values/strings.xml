@@ -49,12 +49,14 @@
 
     <string name="code_null_error">验证码不能为空</string>
     <string name="code_error">验证码不正确</string>
-    
+
     <string name="transfer_tel">value_tel</string>
     <string name="register_back_title">确定重新开始注册</string>
     <string name="register_back_subtitle">短信接收可能需要一段时间，确定要返回重新开始注册吗</string>
     <string name="register_back_cancel">取消</string>
     <string name="register_back_deal">重新开始</string>
+
+    <string name="search_hint">搜索你感兴趣的内容</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

@@ -4,6 +4,7 @@ import java.util.List;
 
 import jqchen.dentalforum.base.BasePresenter;
 import jqchen.dentalforum.base.BaseView;
+import jqchen.dentalforum.data.bean.ADListModel;
 
 /**
  * Created by jqchen on 2016/12/1.
@@ -16,8 +17,10 @@ public interface RecommendContract {
         void load(List<String> list);
         void showError();
         void showNormal();
+        void setBanner(List<ADListModel.InfoBean> banner);
     }
     interface Presenter extends BasePresenter{
         void getRecommend(int page, int size, boolean isRefresh);
+        void getBanner();
     }
 }

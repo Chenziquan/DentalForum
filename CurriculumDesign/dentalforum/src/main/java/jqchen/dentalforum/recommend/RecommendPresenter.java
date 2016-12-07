@@ -2,6 +2,7 @@ package jqchen.dentalforum.recommend;
 
 import java.util.List;
 
+import jqchen.dentalforum.data.bean.ADListModel;
 import jqchen.dentalforum.data.source.RecommendDataSource;
 import jqchen.dentalforum.data.source.RecommendResponsitory;
 
@@ -32,6 +33,11 @@ public class RecommendPresenter implements RecommendContract.Presenter {
             }
 
             @Override
+            public void onBannerLoad(List<ADListModel.InfoBean> banner) {
+
+            }
+
+            @Override
             public void onDataNotAvailable() {
                 if (isRefresh) {
                     mView.showError();
@@ -41,8 +47,29 @@ public class RecommendPresenter implements RecommendContract.Presenter {
     }
 
     @Override
+    public void getBanner() {
+        mRecommendResponsitory.getBanner(new RecommendDataSource.LoadRecommendCallback() {
+            @Override
+            public void onRecommendLoad(List<String> recommend) {
+
+            }
+
+            @Override
+            public void onBannerLoad(List<ADListModel.InfoBean> banner) {
+                mView.setBanner(banner);
+            }
+
+            @Override
+            public void onDataNotAvailable() {
+
+            }
+        });
+    }
+
+    @Override
     public void start() {
         getRecommend(1, 10, true);
+        getBanner();
     }
 
     @Override

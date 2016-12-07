@@ -24,7 +24,7 @@
 
     <style name="frame_back">
         <item name="android:layout_centerVertical">true</item>
-        <item name="android:src">@drawable/white_black</item>
+        <item name="android:src">@drawable/white_back</item>
     </style>
 
     <style name="frame_toolbar">

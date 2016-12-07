@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/recommend_search"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_36"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/dp_8"
+        android:background="@drawable/corner_bg_dp_4"
+        android:drawableLeft="@drawable/icon_search_black"
+        android:drawablePadding="@dimen/dp_4"
+        android:drawableStart="@drawable/icon_search_black"
+        android:focusable="false"
+        android:hint="@string/search_hint"
+        android:paddingLeft="@dimen/dp_8"
+        android:paddingRight="@dimen/dp_8"
+        android:singleLine="true"
+        android:textColorHint="@color/text_color_99"
+        android:textSize="@dimen/sp_14" />
+
+    <cn.bingoogolapple.bgabanner.BGABanner
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginTop="@dimen/dp_8"
+        android:id="@+id/recommend_banner"
+        app:banner_transitionEffect="fade"
+        app:banner_isNumberIndicator="false"
+        app:banner_indicatorGravity="right"
+        app:banner_pointDrawable="@drawable/bga_banner_selector_point_solid"
+        app:banner_numberIndicatorBackground="@android:color/transparent"
+        app:banner_pointContainerLeftRightPadding="@dimen/activity_horizontal_margin"/>
+
+</LinearLayout>

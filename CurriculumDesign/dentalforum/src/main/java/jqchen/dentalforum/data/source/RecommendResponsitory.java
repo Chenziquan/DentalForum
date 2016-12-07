@@ -37,4 +37,9 @@ public class RecommendResponsitory implements RecommendDataSource {
     public void getRecommend(LoadRecommendCallback callback) {
         localRecommendDataSource.getRecommend(callback);
     }
+
+    @Override
+    public void getBanner(LoadRecommendCallback callback) {
+        remoteRecommendDataSource.getBanner(callback);
+    }
 }
