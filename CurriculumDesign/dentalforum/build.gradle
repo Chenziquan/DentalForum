@@ -41,4 +41,5 @@ dependencies {
     compile 'in.srain.cube:ultra-ptr:1.0.11'
     compile 'cn.bingoogolapple:bga-banner:2.1.1@aar'
     compile 'cn.bingoogolapple:bga-refreshlayout:1.1.7@aar'
+    compile 'com.zhy:flowlayout-lib:1.0.3'
 }

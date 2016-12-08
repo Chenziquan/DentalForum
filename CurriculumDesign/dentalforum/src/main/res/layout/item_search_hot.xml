@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_search_hot_content"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dp_8"
+    android:background="@drawable/corner_bg_dp_4"
+    android:paddingBottom="@dimen/dp_4"
+    android:paddingLeft="@dimen/dp_8"
+    android:paddingRight="@dimen/dp_8"
+    android:paddingTop="@dimen/dp_4"
+    android:textColor="@color/text_color_66"
+    android:textSize="@dimen/sp_14">
+
+</TextView>

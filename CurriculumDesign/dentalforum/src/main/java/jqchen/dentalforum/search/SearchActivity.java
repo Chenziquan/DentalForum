@@ -11,8 +11,9 @@ import butterknife.OnClick;
 import jqchen.dentalforum.R;
 import jqchen.dentalforum.library.BaseFragment;
 import jqchen.dentalforum.library.TwoFragmentActivity;
+import jqchen.dentalforum.util.ShowToast;
 
-public class SearchActivity extends TwoFragmentActivity {
+public class SearchActivity extends TwoFragmentActivity implements SearchContract.View{
 
     @BindView(R.id.search_edittext)
     EditText searchEdittext;
@@ -21,6 +22,8 @@ public class SearchActivity extends TwoFragmentActivity {
 
     private SearchDefaultFragment defaultFragment;
     private SearchContentFragment contentFragment;
+    private ShowToast mShowToast;
+    private SearchPresenter mPresenter;
 
     @Override
     protected BaseFragment getFirstFragment() {
@@ -36,6 +39,13 @@ public class SearchActivity extends TwoFragmentActivity {
         setContentView(R.layout.activity_search);
         ButterKnife.bind(this);
         initToolBar();
+        init();
+        mPresenter = new SearchPresenter(this);
+        mPresenter.start();
+    }
+
+    private void init() {
+        mShowToast = new ShowToast(this);
     }
 
     private void initToolBar() {
@@ -59,8 +69,33 @@ public class SearchActivity extends TwoFragmentActivity {
                 removeFragment();
                 break;
             case R.id.search_submit:
-                addFragment(SearchContentFragment.getInstance());
+                mPresenter.search(searchEdittext.getText().toString());
                 break;
         }
+    }
+
+    @Override
+    public void showKeyNullError() {
+        mShowToast.show(getString(R.string.search_null_hint));
+    }
+
+    @Override
+    public void showSearchContent(BaseFragment baseFragment) {
+        addFragment(baseFragment);
+    }
+
+    @Override
+    public void setPresenter(Object presenter) {
+
+    }
+
+    @Override
+    public void showError() {
+
+    }
+
+    @Override
+    public void showNormal() {
+
     }
 }

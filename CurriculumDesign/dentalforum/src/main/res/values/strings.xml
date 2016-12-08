@@ -57,6 +57,11 @@
     <string name="register_back_deal">重新开始</string>
 
     <string name="search_hint">搜索你感兴趣的内容</string>
+    <string name="search_null_hint">请输入搜索内容</string>
+
+    <string name="search_default_hot">热门搜索</string>
+    <string name="search_default_history">搜索记录</string>
+    <string name="search_default_history_clear">清空历史记录</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

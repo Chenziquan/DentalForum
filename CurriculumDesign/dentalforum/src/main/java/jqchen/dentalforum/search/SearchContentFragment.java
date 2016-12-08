@@ -19,13 +19,16 @@ public class SearchContentFragment extends BaseFragment {
     @BindView(R.id.text)
     TextView text;
     private Unbinder unbinder;
+    private String searchKey;
 
     public SearchContentFragment() {
         // Required empty public constructor
     }
 
-    public static SearchContentFragment getInstance() {
-        return new SearchContentFragment();
+    public static SearchContentFragment getInstance(Bundle bundle) {
+        SearchContentFragment contentFragment = new SearchContentFragment();
+        contentFragment.setArguments(bundle);
+        return contentFragment;
     }
 
     @Override
