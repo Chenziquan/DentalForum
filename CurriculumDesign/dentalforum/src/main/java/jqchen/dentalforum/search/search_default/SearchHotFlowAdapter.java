@@ -1,4 +1,4 @@
-package jqchen.dentalforum.search;
+package jqchen.dentalforum.search.search_default;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -26,7 +26,7 @@ public class SearchHotFlowAdapter extends TagAdapter<String> {
 
     @Override
     public View getView(FlowLayout parent, int position, String s) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_search_hot, parent);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_search_hot, null);
         ((TextView) view.findViewById(R.id.item_search_hot_content)).setText(s);
         return view;
     }

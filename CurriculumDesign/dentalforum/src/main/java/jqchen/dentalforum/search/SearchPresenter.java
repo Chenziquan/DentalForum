@@ -1,7 +1,7 @@
 package jqchen.dentalforum.search;
 
 import jqchen.dentalforum.data.source.SearchDataSource;
-import jqchen.dentalforum.data.source.SearchResponsitory;
+import jqchen.dentalforum.data.source.repository.SearchResponsitory;
 import jqchen.dentalforum.library.BaseFragment;
 
 /**

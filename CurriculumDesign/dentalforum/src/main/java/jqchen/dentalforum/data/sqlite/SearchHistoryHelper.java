@@ -17,7 +17,7 @@ public class SearchHistoryHelper extends SQLiteOpenHelper {
             " (" + SearchHistory.SEARCH_ID +
             " INTEGER PRIMARY KEY AUTOINCREMENT," + SearchHistory.SEARCH_CONTENT +
             " TEXT," + SearchHistory.SEARCH_TIME +
-            "TEXT)";
+            " TEXT)";
 
     public SearchHistoryHelper(Context context) {
         super(context, NAME, null, VERSION);

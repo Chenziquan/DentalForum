@@ -11,6 +11,9 @@ import butterknife.OnClick;
 import jqchen.dentalforum.R;
 import jqchen.dentalforum.library.BaseFragment;
 import jqchen.dentalforum.library.TwoFragmentActivity;
+import jqchen.dentalforum.search.search_content.SearchContentFragment;
+import jqchen.dentalforum.search.search_default.SearchDefaultCallBack;
+import jqchen.dentalforum.search.search_default.SearchDefaultFragment;
 import jqchen.dentalforum.util.ShowToast;
 
 public class SearchActivity extends TwoFragmentActivity implements SearchContract.View{
@@ -42,6 +45,17 @@ public class SearchActivity extends TwoFragmentActivity implements SearchContrac
         init();
         mPresenter = new SearchPresenter(this);
         mPresenter.start();
+        setListener();
+    }
+
+    private void setListener() {
+        defaultFragment.setCallBack(new SearchDefaultCallBack() {
+            @Override
+            public void onSearchContent(String content) {
+                searchEdittext.setText(content);
+                mPresenter.search(content);
+            }
+        });
     }
 
     private void init() {

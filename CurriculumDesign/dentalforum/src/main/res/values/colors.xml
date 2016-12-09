@@ -16,6 +16,8 @@
 
     <color name="them_bg_color">#F8F8F8</color>
 
+    <color name="bg_color">#EFEFF0</color>
+
     <!--分割线颜色-->
     <color name="split_color">#CDCDCD</color>
 

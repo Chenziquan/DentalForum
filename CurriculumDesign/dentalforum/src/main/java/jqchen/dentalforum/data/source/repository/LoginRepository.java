@@ -1,5 +1,6 @@
-package jqchen.dentalforum.data.source;
+package jqchen.dentalforum.data.source.repository;
 
+import jqchen.dentalforum.data.source.LoginDataSource;
 import jqchen.dentalforum.data.source.local.LocalLoginDataSource;
 import jqchen.dentalforum.data.source.remote.RemoteLoginDataSource;
 
@@ -7,20 +8,20 @@ import jqchen.dentalforum.data.source.remote.RemoteLoginDataSource;
  * Created by jqchen on 2016/12/3.
  * Use to
  */
-public class LoginResponsitory implements LoginDataSource {
-    public static LoginResponsitory INSTANCE = null;
+public class LoginRepository implements LoginDataSource {
+    public static LoginRepository INSTANCE = null;
 
     private LocalLoginDataSource localLoginDataSource;
     private RemoteLoginDataSource remoteLoginDataSource;
 
-    public LoginResponsitory() {
+    public LoginRepository() {
         this.localLoginDataSource = new LocalLoginDataSource();
         this.remoteLoginDataSource = new RemoteLoginDataSource();
     }
 
-    public static LoginResponsitory getInstance() {
+    public static LoginRepository getInstance() {
         if (INSTANCE == null) {
-            INSTANCE = new LoginResponsitory();
+            INSTANCE = new LoginRepository();
         }
         return INSTANCE;
     }

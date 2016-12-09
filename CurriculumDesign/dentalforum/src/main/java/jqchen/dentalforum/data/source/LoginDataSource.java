@@ -1,11 +1,13 @@
 package jqchen.dentalforum.data.source;
 
+import jqchen.dentalforum.base.BaseCallBack;
+
 /**
  * Created by jqchen on 2016/12/3.
  * Use to
  */
 public interface LoginDataSource {
-    interface LoginCallback {
+    interface LoginCallback extends BaseCallBack{
         void onGetUsername(String username);
 
         void onUsernameError();
@@ -14,7 +16,6 @@ public interface LoginDataSource {
 
         void onSuccess();
 
-        void onDataNotAvailable();
     }
 
     void getUsername(LoginCallback callback);

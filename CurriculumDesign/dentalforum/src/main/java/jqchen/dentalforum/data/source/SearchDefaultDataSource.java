@@ -2,17 +2,17 @@ package jqchen.dentalforum.data.source;
 
 import java.util.List;
 
+import jqchen.dentalforum.base.BaseCallBack;
+
 /**
  * Created by jqchen on 2016/12/8.
  * Use to
  */
 public interface SearchDefaultDataSource {
-    interface SearchDefaultCallBack {
+    interface SearchDefaultCallBack extends BaseCallBack {
         void onLoadSearchHot(List<String> hot);
 
         void onLoadSearchHistory(List<String> history);
-
-        void onDataNotAvailable();
     }
 
     interface DeleteSearchHistoryCallBack {

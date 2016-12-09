@@ -1,4 +1,4 @@
-package jqchen.dentalforum.search;
+package jqchen.dentalforum.search.search_default;
 
 import java.util.List;
 

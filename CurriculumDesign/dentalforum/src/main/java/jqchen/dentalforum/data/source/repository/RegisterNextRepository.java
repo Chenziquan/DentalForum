@@ -1,5 +1,6 @@
-package jqchen.dentalforum.data.source;
+package jqchen.dentalforum.data.source.repository;
 
+import jqchen.dentalforum.data.source.RegisterNextDataSource;
 import jqchen.dentalforum.data.source.local.LocalRegisterNextDataSource;
 import jqchen.dentalforum.data.source.remote.RemoteRegisterNextDataSource;
 
@@ -7,19 +8,19 @@ import jqchen.dentalforum.data.source.remote.RemoteRegisterNextDataSource;
  * Created by jqchen on 2016/12/5.
  * Use to
  */
-public class RegisterNextResponsitory implements RegisterNextDataSource {
-    private static RegisterNextResponsitory INSTANCE = null;
+public class RegisterNextRepository implements RegisterNextDataSource {
+    private static RegisterNextRepository INSTANCE = null;
     private LocalRegisterNextDataSource localRegisterNextDataSource;
     private RemoteRegisterNextDataSource remoteRegisterNextDataSource;
 
-    public RegisterNextResponsitory() {
+    public RegisterNextRepository() {
         this.localRegisterNextDataSource = new LocalRegisterNextDataSource();
         this.remoteRegisterNextDataSource = new RemoteRegisterNextDataSource();
     }
 
-    public static RegisterNextResponsitory getInstance() {
+    public static RegisterNextRepository getInstance() {
         if (INSTANCE == null) {
-            INSTANCE = new RegisterNextResponsitory();
+            INSTANCE = new RegisterNextRepository();
         }
         return INSTANCE;
     }

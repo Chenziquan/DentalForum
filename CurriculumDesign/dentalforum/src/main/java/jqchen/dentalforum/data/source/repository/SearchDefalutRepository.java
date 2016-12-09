@@ -1,5 +1,6 @@
-package jqchen.dentalforum.data.source;
+package jqchen.dentalforum.data.source.repository;
 
+import jqchen.dentalforum.data.source.SearchDefaultDataSource;
 import jqchen.dentalforum.data.source.local.LocalSearchDefaultDataSource;
 import jqchen.dentalforum.data.source.remote.RemoteSearchDefaultDataSource;
 
@@ -7,19 +8,19 @@ import jqchen.dentalforum.data.source.remote.RemoteSearchDefaultDataSource;
  * Created by jqchen on 2016/12/8.
  * Use to
  */
-public class SearchDefalutResponsitory implements SearchDefaultDataSource {
-    private static SearchDefalutResponsitory Instance;
+public class SearchDefalutRepository implements SearchDefaultDataSource {
+    private static SearchDefalutRepository Instance;
     private LocalSearchDefaultDataSource localSearchDefaultDataSource;
     private RemoteSearchDefaultDataSource remoteSearchDefaultDataSource;
 
-    public SearchDefalutResponsitory() {
+    public SearchDefalutRepository() {
         this.localSearchDefaultDataSource = new LocalSearchDefaultDataSource();
         this.remoteSearchDefaultDataSource = new RemoteSearchDefaultDataSource();
     }
 
-    public static SearchDefalutResponsitory getInstance() {
+    public static SearchDefalutRepository getInstance() {
         if (Instance == null) {
-            Instance = new SearchDefalutResponsitory();
+            Instance = new SearchDefalutRepository();
         }
         return Instance;
     }

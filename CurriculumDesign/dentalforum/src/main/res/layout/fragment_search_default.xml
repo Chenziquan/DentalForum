@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="jqchen.dentalforum.search.SearchDefaultFragment">
+    tools:context=".search.search_default.SearchDefaultFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -59,7 +59,7 @@
                             android:src="@drawable/search_default_refresh" />
                     </RelativeLayout>
 
-                    <com.zhy.view.flowlayout.FlowLayout
+                    <com.zhy.view.flowlayout.TagFlowLayout
                         android:id="@+id/search_default_hot_flowlayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -71,6 +71,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:background="@android:color/white">
 
@@ -95,17 +96,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
-                    <TextView
-                        android:id="@+id/search_default_history_clear"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="@dimen/dp_8"
-                        android:text="@string/search_default_history_clear"
-                        android:textColor="@color/text_color_80"
-                        android:textSize="@dimen/sp_14" />
-
                 </android.support.v7.widget.LinearLayoutCompat>
+                <TextView
+                    android:id="@+id/search_default_history_clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/search_default_history_clear"
+                    android:textColor="@color/text_color_80"
+                    android:textSize="@dimen/sp_14" />
             </LinearLayout>
 
 

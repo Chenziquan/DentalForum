@@ -1,13 +1,17 @@
-package jqchen.dentalforum.search;
+package jqchen.dentalforum.search.search_default;
 
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewStub;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.SimpleClickListener;
 import com.zhy.view.flowlayout.FlowLayout;
+import com.zhy.view.flowlayout.TagFlowLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +28,7 @@ import jqchen.dentalforum.library.BaseFragment;
  */
 public class SearchDefaultFragment extends BaseFragment implements SearchDefaultContract.View {
     @BindView(R.id.search_default_hot_flowlayout)
-    FlowLayout searchDefaultHotFlowlayout;
+    TagFlowLayout searchDefaultHotFlowlayout;
     @BindView(R.id.search_default_history_recycler)
     RecyclerView searchDefaultHistoryRecycler;
     @BindView(R.id.network_error_layout)
@@ -33,7 +37,14 @@ public class SearchDefaultFragment extends BaseFragment implements SearchDefault
     private Unbinder unbinder;
     private View networkErrorView;
     private List<String> hot, history;
+    private SearchHotFlowAdapter hotFlowAdapter;
+    private SearchHistoryAdapter historyAdapter;
     private SearchDefaultPresenter mPresenter;
+    private SearchDefaultCallBack callBack;
+
+    public void setCallBack(SearchDefaultCallBack callBack) {
+        this.callBack = callBack;
+    }
 
     public SearchDefaultFragment() {
         // Required empty public constructor
@@ -59,20 +70,75 @@ public class SearchDefaultFragment extends BaseFragment implements SearchDefault
         hot = new ArrayList<>();
         history = new ArrayList<>();
         setAdapter();
+        setListener();
+        mPresenter.start();
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden){
+            mPresenter.start();
+        }
+    }
+
+    private void setListener() {
+        searchDefaultHotFlowlayout.setOnTagClickListener(new TagFlowLayout.OnTagClickListener() {
+            @Override
+            public boolean onTagClick(View view, int position, FlowLayout parent) {
+                if (callBack != null) {
+                    callBack.onSearchContent(hot.get(position));
+                }
+                return false;
+            }
+        });
+        searchDefaultHistoryRecycler.addOnItemTouchListener(new SimpleClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
+                if (callBack != null) {
+                    callBack.onSearchContent(hot.get(i));
+                }
+            }
+
+            @Override
+            public void onItemLongClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
+
+            }
+
+            @Override
+            public void onItemChildClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
+                mPresenter.deleteSearchHistory(history.get(i));
+            }
+
+            @Override
+            public void onItemChildLongClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
+
+            }
+        });
+
     }
 
     private void setAdapter() {
-
+        hotFlowAdapter = new SearchHotFlowAdapter(this.getContext(), hot);
+        searchDefaultHotFlowlayout.setAdapter(hotFlowAdapter);
+        historyAdapter = new SearchHistoryAdapter(R.layout.item_search_history, history);
+        historyAdapter.setEnableLoadMore(false);
+        searchDefaultHistoryRecycler.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        searchDefaultHistoryRecycler.setAdapter(historyAdapter);
     }
 
     @Override
     public void showSearchHot(List<String> hot) {
-
+        this.hot.clear();
+        this.hot.addAll(hot);
+        this.hotFlowAdapter.notifyDataChanged();
     }
 
     @Override
     public void showSearchHistory(List<String> history) {
-
+        this.history.clear();
+        this.history.addAll(history);
+        this.historyAdapter.notifyDataSetChanged();
     }
 
     @Override

@@ -1,5 +1,6 @@
-package jqchen.dentalforum.data.source;
+package jqchen.dentalforum.data.source.repository;
 
+import jqchen.dentalforum.data.source.SearchDataSource;
 import jqchen.dentalforum.data.source.local.LocalSearchDataSource;
 import jqchen.dentalforum.data.source.remote.RemoteSearchDataSource;
 

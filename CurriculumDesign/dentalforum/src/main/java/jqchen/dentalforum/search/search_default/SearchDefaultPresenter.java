@@ -1,8 +1,8 @@
-package jqchen.dentalforum.search;
+package jqchen.dentalforum.search.search_default;
 
 import java.util.List;
 
-import jqchen.dentalforum.data.source.SearchDefalutResponsitory;
+import jqchen.dentalforum.data.source.repository.SearchDefalutRepository;
 import jqchen.dentalforum.data.source.SearchDefaultDataSource;
 
 /**
@@ -18,7 +18,7 @@ public class SearchDefaultPresenter implements SearchDefaultContract.Presenter {
 
     @Override
     public void getSearchHot() {
-        SearchDefalutResponsitory.getInstance().getSearchHot(new SearchDefaultDataSource.SearchDefaultCallBack() {
+        SearchDefalutRepository.getInstance().getSearchHot(new SearchDefaultDataSource.SearchDefaultCallBack() {
             @Override
             public void onLoadSearchHot(List<String> hot) {
                 mView.showSearchHot(hot);
@@ -38,7 +38,7 @@ public class SearchDefaultPresenter implements SearchDefaultContract.Presenter {
 
     @Override
     public void getSearchHistory() {
-        SearchDefalutResponsitory.getInstance().getSearchHistory(new SearchDefaultDataSource.SearchDefaultCallBack() {
+        SearchDefalutRepository.getInstance().getSearchHistory(new SearchDefaultDataSource.SearchDefaultCallBack() {
             @Override
             public void onLoadSearchHot(List<String> hot) {
 
@@ -58,7 +58,7 @@ public class SearchDefaultPresenter implements SearchDefaultContract.Presenter {
 
     @Override
     public void clearSearchHistory() {
-        SearchDefalutResponsitory.getInstance().clearSearchHistory(new SearchDefaultDataSource.DeleteSearchHistoryCallBack() {
+        SearchDefalutRepository.getInstance().clearSearchHistory(new SearchDefaultDataSource.DeleteSearchHistoryCallBack() {
             @Override
             public void onSuccess() {
                 getSearchHistory();
@@ -73,7 +73,7 @@ public class SearchDefaultPresenter implements SearchDefaultContract.Presenter {
 
     @Override
     public void deleteSearchHistory(String history) {
-        SearchDefalutResponsitory.getInstance().deleteSearchHistory(history, new SearchDefaultDataSource.DeleteSearchHistoryCallBack() {
+        SearchDefalutRepository.getInstance().deleteSearchHistory(history, new SearchDefaultDataSource.DeleteSearchHistoryCallBack() {
             @Override
             public void onSuccess() {
                 getSearchHistory();
@@ -97,6 +97,6 @@ public class SearchDefaultPresenter implements SearchDefaultContract.Presenter {
 
     @Override
     public void destory() {
-        SearchDefalutResponsitory.destoryInstance();
+        SearchDefalutRepository.destoryInstance();
     }
 }

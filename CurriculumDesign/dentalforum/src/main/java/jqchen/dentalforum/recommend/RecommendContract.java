@@ -15,8 +15,6 @@ public interface RecommendContract {
     interface View extends BaseView{
         void refresh(List<String> list);
         void load(List<String> list);
-        void showError();
-        void showNormal();
         void setBanner(List<ADListModel.InfoBean> banner);
     }
     interface Presenter extends BasePresenter{

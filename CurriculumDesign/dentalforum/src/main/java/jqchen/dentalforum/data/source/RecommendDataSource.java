@@ -2,6 +2,7 @@ package jqchen.dentalforum.data.source;
 
 import java.util.List;
 
+import jqchen.dentalforum.base.BaseCallBack;
 import jqchen.dentalforum.data.bean.ADListModel;
 
 /**
@@ -9,12 +10,11 @@ import jqchen.dentalforum.data.bean.ADListModel;
  * Use to
  */
 public interface RecommendDataSource {
-    interface LoadRecommendCallback {
+    interface LoadRecommendCallback extends BaseCallBack{
         void onRecommendLoad(List<String> recommend);
 
         void onBannerLoad(List<ADListModel.InfoBean> banner);
 
-        void onDataNotAvailable();
     }
 
     void getRecommend(int page, int size, LoadRecommendCallback callback);

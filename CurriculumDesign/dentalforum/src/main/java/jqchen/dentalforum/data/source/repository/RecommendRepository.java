@@ -1,35 +1,43 @@
-package jqchen.dentalforum.data.source;
+package jqchen.dentalforum.data.source.repository;
 
+import android.support.annotation.NonNull;
+
+import jqchen.dentalforum.data.source.RecommendDataSource;
 import jqchen.dentalforum.data.source.local.LocalRecommendDataSource;
 import jqchen.dentalforum.data.source.remote.RemoteRecommendDataSource;
+
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * Created by jqchen on 2016/12/2.
  * Use to
  */
-public class RecommendResponsitory implements RecommendDataSource {
-    public static RecommendResponsitory INSTANCE = null;
+public class RecommendRepository implements RecommendDataSource {
+    public static RecommendRepository INSTANCE = null;
     private LocalRecommendDataSource localRecommendDataSource;
     private RemoteRecommendDataSource remoteRecommendDataSource;
 
-    public RecommendResponsitory() {
+    public RecommendRepository() {
         this.localRecommendDataSource = new LocalRecommendDataSource();
         this.remoteRecommendDataSource = new RemoteRecommendDataSource();
     }
 
-    public static RecommendResponsitory getInstance() {
+    public static RecommendRepository getInstance() {
         if (INSTANCE == null) {
-            INSTANCE = new RecommendResponsitory();
+            INSTANCE = new RecommendRepository();
         }
         return INSTANCE;
     }
 
-    public static void destoryInstance(){
+    public static void destoryInstance() {
         INSTANCE = null;
     }
 
     @Override
-    public void getRecommend(int page, int size, LoadRecommendCallback callback) {
+    public void getRecommend(int page, int size, @NonNull LoadRecommendCallback callback) {
+        checkNotNull(page);
+        checkNotNull(size);
+        checkNotNull(callback);
         localRecommendDataSource.getRecommend(page, size, callback);
     }
 

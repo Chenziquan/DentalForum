@@ -1,7 +1,7 @@
 package jqchen.dentalforum.register;
 
 import jqchen.dentalforum.data.source.RegisterDataSource;
-import jqchen.dentalforum.data.source.RegisterResponsitory;
+import jqchen.dentalforum.data.source.repository.RegisterRepository;
 
 /**
  * Created by jqchen on 2016/12/5.
@@ -16,7 +16,7 @@ public class RegisterPresenter implements RegisterContract.Preseneter {
 
     @Override
     public void goNextStep(String telnum) {
-        RegisterResponsitory.getInstance().register(telnum, new RegisterDataSource.RegisterCallBack() {
+        RegisterRepository.getInstance().register(telnum, new RegisterDataSource.RegisterCallBack() {
             @Override
             public void onTelNull() {
                 mView.showTelNullError();
@@ -51,6 +51,6 @@ public class RegisterPresenter implements RegisterContract.Preseneter {
 
     @Override
     public void destory() {
-        RegisterResponsitory.destoryInstance();
+        RegisterRepository.destoryInstance();
     }
 }

@@ -3,7 +3,7 @@ package jqchen.dentalforum.register;
 import android.os.CountDownTimer;
 
 import jqchen.dentalforum.data.source.RegisterNextDataSource;
-import jqchen.dentalforum.data.source.RegisterNextResponsitory;
+import jqchen.dentalforum.data.source.repository.RegisterNextRepository;
 
 /**
  * Created by jqchen on 2016/12/5.
@@ -30,7 +30,7 @@ public class RegisterNextPresenter implements RegisterNextContract.Presenter {
 
     @Override
     public void sendCode(String telnum) {
-        RegisterNextResponsitory.getInstance().sendCode(telnum, new RegisterNextDataSource.RegisterSendCodeCallBack() {
+        RegisterNextRepository.getInstance().sendCode(telnum, new RegisterNextDataSource.RegisterSendCodeCallBack() {
             @Override
             public void onError() {
 
@@ -46,7 +46,7 @@ public class RegisterNextPresenter implements RegisterNextContract.Presenter {
 
     @Override
     public void registerNext(String telnum, String code) {
-        RegisterNextResponsitory.getInstance().registerNext(telnum, code, new RegisterNextDataSource.RegisterNextCallBack() {
+        RegisterNextRepository.getInstance().registerNext(telnum, code, new RegisterNextDataSource.RegisterNextCallBack() {
             @Override
             public void onCodeNullError() {
                 mView.showCodeNullError();
@@ -71,7 +71,7 @@ public class RegisterNextPresenter implements RegisterNextContract.Presenter {
 
     @Override
     public void destory() {
-        RegisterNextResponsitory.destoryInstance();
+        RegisterNextRepository.destoryInstance();
         countDownTimer.cancel();
     }
 }

@@ -1,7 +1,7 @@
 package jqchen.dentalforum.login;
 
 import jqchen.dentalforum.data.source.LoginDataSource;
-import jqchen.dentalforum.data.source.LoginResponsitory;
+import jqchen.dentalforum.data.source.repository.LoginRepository;
 
 /**
  * Created by jqchen on 2016/12/3.
@@ -16,7 +16,7 @@ public class LoginPresenter implements LoginContract.Presenter {
 
     @Override
     public void getUsername() {
-        LoginResponsitory.getInstance().getUsername(new LoginDataSource.LoginCallback() {
+        LoginRepository.getInstance().getUsername(new LoginDataSource.LoginCallback() {
             @Override
             public void onGetUsername(String username) {
                 mView.setUsername(username);
@@ -46,7 +46,7 @@ public class LoginPresenter implements LoginContract.Presenter {
 
     @Override
     public void login(String username, String password) {
-        LoginResponsitory.getInstance().login(username, password, new LoginDataSource.LoginCallback() {
+        LoginRepository.getInstance().login(username, password, new LoginDataSource.LoginCallback() {
             @Override
             public void onGetUsername(String username) {
             }
@@ -80,6 +80,6 @@ public class LoginPresenter implements LoginContract.Presenter {
 
     @Override
     public void destory() {
-        LoginResponsitory.destoryInstance();
+        LoginRepository.destoryInstance();
     }
 }

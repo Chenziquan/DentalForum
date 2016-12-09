@@ -4,7 +4,7 @@ import java.util.List;
 
 import jqchen.dentalforum.data.bean.ADListModel;
 import jqchen.dentalforum.data.source.RecommendDataSource;
-import jqchen.dentalforum.data.source.RecommendResponsitory;
+import jqchen.dentalforum.data.source.repository.RecommendRepository;
 
 /**
  * Created by jqchen on 2016/12/2.
@@ -12,11 +12,11 @@ import jqchen.dentalforum.data.source.RecommendResponsitory;
  */
 public class RecommendPresenter implements RecommendContract.Presenter {
     private RecommendContract.View mView;
-    private RecommendResponsitory mRecommendResponsitory;
+    private RecommendRepository mRecommendResponsitory;
 
     public RecommendPresenter(RecommendContract.View mView) {
         this.mView = mView;
-        this.mRecommendResponsitory = new RecommendResponsitory();
+        this.mRecommendResponsitory = new RecommendRepository();
     }
 
     @Override
@@ -74,6 +74,6 @@ public class RecommendPresenter implements RecommendContract.Presenter {
 
     @Override
     public void destory() {
-        RecommendResponsitory.destoryInstance();
+        RecommendRepository.destoryInstance();
     }
 }

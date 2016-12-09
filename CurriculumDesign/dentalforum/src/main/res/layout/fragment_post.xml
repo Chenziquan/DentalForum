@@ -5,9 +5,25 @@
     tools:context="jqchen.dentalforum.post.PostFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ViewStub
+        android:id="@+id/network_error_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout="@layout/network_error" />
+
+    <cn.bingoogolapple.refreshlayout.BGARefreshLayout
+        android:id="@+id/post_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_color">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/post_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never" />
+
+
+    </cn.bingoogolapple.refreshlayout.BGARefreshLayout>
 
 </FrameLayout>

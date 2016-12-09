@@ -17,7 +17,7 @@ import jqchen.dentalforum.data.bean.SearchHistory;
  */
 public class SearchHistoryDataBase {
     private static SearchHistoryDataBase Instance;
-    private static SearchHistoryHelper historyHelper;
+    private SearchHistoryHelper historyHelper;
     private SQLiteDatabase sqLiteDatabase;
 
     public SearchHistoryDataBase(Context context) {
@@ -66,10 +66,10 @@ public class SearchHistoryDataBase {
         Cursor cursor = sqLiteDatabase.rawQuery(sql, new String[]{content});
         if (cursor.moveToFirst()) {
             cursor.close();
-            return false;
+            return true;
         } else {
             cursor.close();
-            return true;
+            return false;
         }
     }
 
@@ -107,7 +107,9 @@ public class SearchHistoryDataBase {
             if (list.size() >= SearchHistory.SEARCH_NUM) {
                 return update(list.get(list.size() - 1), content);
             } else {
-                return insert(content);
+                insert(content);
+                return true;
+//                return insert(content);
             }
         }
     }
