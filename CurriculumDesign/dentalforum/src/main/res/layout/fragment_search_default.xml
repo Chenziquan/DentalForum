@@ -103,6 +103,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="@string/search_default_history_clear"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
                     android:textColor="@color/text_color_80"
                     android:textSize="@dimen/sp_14" />
             </LinearLayout>
