@@ -6,7 +6,6 @@
         <item name="colorPrimary">@color/them_color</item>
         <item name="colorPrimaryDark">@color/them_color</item>
         <item name="colorAccent">@color/them_color</item>
-        <item name="android:navigationBarColor">@color/them_color</item>
     </style>
 
 
@@ -62,6 +61,28 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowFrame">@null</item>
         <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="user_item_relative">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/activity_vertical_margin</item>
+        <item name="android:layout_marginBottom">@dimen/activity_vertical_margin</item>
+    </style>
+
+    <style name="user_item_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_color_4d</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:layout_marginLeft">@dimen/dp_4</item>
+    </style>
+
+    <style name="user_item_more">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
     </style>
 
 </resources>

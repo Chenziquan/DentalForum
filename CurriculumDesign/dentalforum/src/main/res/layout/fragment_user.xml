@@ -13,29 +13,480 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <android.support.v7.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@android:color/white"
                 android:orientation="vertical"
                 app:divider="@drawable/divider_vertical"
                 app:showDividers="middle">
+
                 <LinearLayout
+                    android:id="@+id/user_sign_out"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
                     android:gravity="center_vertical"
-                    android:layout_margin="@dimen/activity_horizontal_margin">
+                    android:visibility="visible">
+
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/icon_user_default" />
+
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_8"
+                        android:layout_marginStart="@dimen/dp_8"
+                        android:text="@string/user_sigin_hint"
+                        android:textColor="@color/text_color_80"
+                        android:textSize="@dimen/sp_13" />
                 </LinearLayout>
 
+                <RelativeLayout
+                    android:id="@+id/user_sign_in"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:gravity="center_vertical"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/user_sign_portrait"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_user_default" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_8"
+                        android:layout_marginStart="@dimen/dp_8"
+                        android:layout_toEndOf="@id/user_sign_portrait"
+                        android:layout_toRightOf="@id/user_sign_portrait"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/user_sign_in_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="陈军权"
+                            android:textColor="@color/text_color_4d"
+                            android:textSize="@dimen/sp_14" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_4">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/user_sigin_integration"
+                                android:textColor="@color/text_color_80"
+                                android:textSize="@dimen/sp_12" />
+
+                            <TextView
+                                android:id="@+id/user_sign_in_integration"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="155"
+                                android:textColor="@color/text_color_80"
+                                android:textSize="@dimen/sp_12" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/more" />
+                </RelativeLayout>
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:orientation="horizontal"
+                    app:divider="@drawable/divider_horizontal"
+                    app:showDividers="middle">
+
+                    <LinearLayout
+                        android:id="@+id/user_posts"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/user_post"
+                            android:textColor="@color/text_color_80"
+                            android:textSize="@dimen/sp_12" />
+
+                        <TextView
+                            android:id="@+id/user_num_posts"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="15"
+                            android:textColor="@color/text_color_4d"
+                            android:textSize="@dimen/sp_12" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/user_wealth"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/user_wealth"
+                            android:textColor="@color/text_color_80"
+                            android:textSize="@dimen/sp_12" />
+
+                        <TextView
+                            android:id="@+id/user_num_wealth"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="15"
+                            android:textColor="@color/text_color_4d"
+                            android:textSize="@dimen/sp_12" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/user_collection"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/user_collection"
+                            android:textColor="@color/text_color_80"
+                            android:textSize="@dimen/sp_12" />
+
+                        <TextView
+                            android:id="@+id/user_num_collection"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="15"
+                            android:textColor="@color/text_color_4d"
+                            android:textSize="@dimen/sp_12" />
+                    </LinearLayout>
+                </android.support.v7.widget.LinearLayoutCompat>
+
             </android.support.v7.widget.LinearLayoutCompat>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:background="@android:color/white"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin">
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:divider="@drawable/divider_vertical"
+                    app:showDividers="middle">
+
+                    <RelativeLayout style="@style/user_item_relative">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/user_icon_test" />
+
+                            <TextView
+                                style="@style/user_item_text"
+                                android:text="测试" />
+                        </LinearLayout>
+
+                        <ImageView
+                            style="@style/user_item_more"
+                            android:src="@drawable/more" />
+                    </RelativeLayout>
+
+                    <RelativeLayout style="@style/user_item_relative">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/user_icon_test" />
+
+                            <TextView
+                                style="@style/user_item_text"
+                                android:text="测试" />
+                        </LinearLayout>
+
+                        <ImageView
+                            style="@style/user_item_more"
+                            android:src="@drawable/more" />
+                    </RelativeLayout>
+
+                    <RelativeLayout style="@style/user_item_relative">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/user_icon_test" />
+
+                            <TextView
+                                style="@style/user_item_text"
+                                android:text="测试" />
+                        </LinearLayout>
+
+                        <ImageView
+                            style="@style/user_item_more"
+                            android:src="@drawable/more" />
+                    </RelativeLayout>
+
+                </android.support.v7.widget.LinearLayoutCompat>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:background="@android:color/white"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin">
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:divider="@drawable/divider_vertical"
+                    app:showDividers="middle">
+
+                    <RelativeLayout style="@style/user_item_relative">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/user_icon_test" />
+
+                            <TextView
+                                style="@style/user_item_text"
+                                android:text="测试" />
+                        </LinearLayout>
+
+                        <ImageView
+                            style="@style/user_item_more"
+                            android:src="@drawable/more" />
+                    </RelativeLayout>
+
+                    <RelativeLayout style="@style/user_item_relative">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/user_icon_test" />
+
+                            <TextView
+                                style="@style/user_item_text"
+                                android:text="测试" />
+                        </LinearLayout>
+
+                        <ImageView
+                            style="@style/user_item_more"
+                            android:src="@drawable/more" />
+                    </RelativeLayout>
+
+                    <RelativeLayout style="@style/user_item_relative">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/user_icon_test" />
+
+                            <TextView
+                                style="@style/user_item_text"
+                                android:text="测试" />
+                        </LinearLayout>
+
+                        <ImageView
+                            style="@style/user_item_more"
+                            android:src="@drawable/more" />
+                    </RelativeLayout>
+
+                </android.support.v7.widget.LinearLayoutCompat>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:background="@android:color/white"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin">
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:divider="@drawable/divider_vertical"
+                    app:showDividers="middle">
+
+                    <RelativeLayout style="@style/user_item_relative">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/user_icon_test" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/dp_4"
+                                android:layout_marginStart="@dimen/dp_4"
+                                android:text="测试"
+                                android:textColor="@color/text_color_4d"
+                                android:textSize="@dimen/sp_13" />
+                        </LinearLayout>
+
+                        <ImageView
+                            style="@style/user_item_more"
+                            android:src="@drawable/more" />
+                    </RelativeLayout>
+
+                    <RelativeLayout style="@style/user_item_relative">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/user_icon_test" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/dp_4"
+                                android:layout_marginStart="@dimen/dp_4"
+                                android:text="测试"
+                                android:textColor="@color/text_color_4d"
+                                android:textSize="@dimen/sp_13" />
+                        </LinearLayout>
+
+                        <ImageView
+                            style="@style/user_item_more"
+                            android:src="@drawable/more" />
+                    </RelativeLayout>
+
+                    <RelativeLayout style="@style/user_item_relative">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/user_icon_test" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/dp_4"
+                                android:layout_marginStart="@dimen/dp_4"
+                                android:text="测试"
+                                android:textColor="@color/text_color_4d"
+                                android:textSize="@dimen/sp_13" />
+                        </LinearLayout>
+
+                        <ImageView
+                            style="@style/user_item_more"
+                            android:src="@drawable/more" />
+                    </RelativeLayout>
+
+                </android.support.v7.widget.LinearLayoutCompat>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:background="@android:color/white"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/user_exit_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="@string/sign_out"
+                    android:textColor="@color/them_color" />
+            </LinearLayout>
+
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

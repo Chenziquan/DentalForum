@@ -126,6 +126,7 @@ public class PostFragment extends BaseFragment implements PostContract.View, BGA
         this.posts.clear();
         this.posts.addAll(posts);
         this.postAdapter.notifyDataSetChanged();
+        postRefresh.endRefreshing();
     }
 
     @Override
@@ -164,7 +165,12 @@ public class PostFragment extends BaseFragment implements PostContract.View, BGA
 
     @Override
     public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
-
+        postRefresh.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mPresenter.start();
+            }
+        }, 1800);
     }
 
     @Override
