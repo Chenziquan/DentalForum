@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:background="@color/them_bg_color"
     android:padding="@dimen/activity_horizontal_margin"
-    tools:context="jqchen.dentalforum.register.RegisterNextFragment">
+    tools:context=".user.register.RegisterNextFragment">
 
     <ViewStub
         android:id="@+id/network_error_layout"
@@ -46,7 +46,7 @@
             android:layout_weight="1"
             android:singleLine="true"
             android:hint="@string/input_code_hint"
-            android:background="@drawable/corner_bg_dp_4" />
+            android:background="@drawable/corner_bg_gray_dp_4" />
 
         <TextView
             android:id="@+id/register_next_send"
@@ -58,7 +58,7 @@
             android:textSize="@dimen/sp_12"
             android:text="@string/send_code"
             android:textColor="@color/text_color_4d"
-            android:background="@drawable/corner_bg_dp_4"
+            android:background="@drawable/corner_bg_gray_dp_4"
             tools:ignore="RtlHardcoded" />
     </LinearLayout>
 

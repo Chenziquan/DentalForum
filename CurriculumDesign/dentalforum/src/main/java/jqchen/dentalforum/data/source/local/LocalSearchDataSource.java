@@ -5,7 +5,7 @@ import android.text.TextUtils;
 
 import jqchen.dentalforum.data.source.SearchDataSource;
 import jqchen.dentalforum.data.sqlite.SearchHistoryDataBase;
-import jqchen.dentalforum.search.search_content.SearchContentFragment;
+import jqchen.dentalforum.function.search.search_content.SearchContentFragment;
 
 /**
  * Created by jqchen on 2016/12/8.

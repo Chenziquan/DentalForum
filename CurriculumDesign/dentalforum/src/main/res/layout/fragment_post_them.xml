@@ -1,0 +1,31 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="jqchen.dentalforum.post.post.them.PostThemFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <com.zhy.view.flowlayout.TagFlowLayout
+            android:id="@+id/post_them_flowlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/post_them_deal"
+            android:layout_width="140dp"
+            android:layout_height="@dimen/dp_36"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/post_them_undeal"
+            android:clickable="false"
+            android:gravity="center"
+            android:text="@string/post_them_deal"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp_14" />
+    </RelativeLayout>
+
+</FrameLayout>

@@ -65,13 +65,20 @@
 
     <string name="user_sigin_hint">登录查看更多信息</string>
     <string name="user_sigin_integration">积分：</string>
-    
+
     <string name="user_post">帖子</string>
     <string name="user_wealth">财富</string>
     <string name="user_collection">收藏</string>
 
     <string name="sign_out">退出当前账号</string>
 
+    <string name="post_them_title">选择版块</string>
+    <string name="post_them_deal">确定</string>
+    <string name="post_content_title">发表主题</string>
+    <string name="post_content_cancel">取消</string>
+    <string name="post_content_submit">发表</string>
+    <string name="post_content_hint_title">输入内容</string>
+    <string name="post_content_hint_content">输入标题</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

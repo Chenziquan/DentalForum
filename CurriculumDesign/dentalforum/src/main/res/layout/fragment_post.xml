@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="jqchen.dentalforum.post.PostFragment">
+    tools:context=".frame.posts.PostsFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <ViewStub

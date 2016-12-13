@@ -12,7 +12,7 @@
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/dp_8"
-        android:background="@drawable/corner_bg_dp_4"
+        android:background="@drawable/corner_bg_gray_dp_4"
         android:drawableLeft="@drawable/icon_search_black"
         android:drawablePadding="@dimen/dp_4"
         android:drawableStart="@drawable/icon_search_black"

@@ -28,11 +28,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".login.LoginActivity" />
-        <activity android:name=".navigatesigin.NavigateSiginActivity" />
-        <activity android:name=".register.RegisterActivity" />
-        <activity android:name=".register.RegisterNextActivity" />
-        <activity android:name=".search.SearchActivity"></activity>
+        <activity android:name=".user.login.LoginActivity" />
+        <activity android:name=".user.navigatesigin.NavigateSiginActivity" />
+        <activity android:name=".user.register.RegisterActivity" />
+        <activity android:name=".user.register.RegisterNextActivity" />
+        <activity android:name=".function.search.SearchActivity" />
+        <activity android:name=".post.post.them.PostThemActivity" />
+        <activity android:name=".post.post.content.PostContentActivity"></activity>
     </application>
 
 </manifest>

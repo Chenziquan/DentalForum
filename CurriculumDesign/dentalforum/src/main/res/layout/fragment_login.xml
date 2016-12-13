@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/them_bg_color"
-    tools:context="jqchen.dentalforum.login.LoginFragment">
+    tools:context=".user.login.LoginFragment">
 
     <ViewStub
         android:id="@+id/network_error_layout"
@@ -25,7 +25,7 @@
             <android.support.v7.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/corner_bg_dp_4"
+                android:background="@drawable/corner_bg_gray_dp_4"
                 android:orientation="vertical"
                 app:divider="@drawable/divider_vertical"
                 app:showDividers="middle">

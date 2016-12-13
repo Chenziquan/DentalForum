@@ -85,4 +85,13 @@
         <item name="android:layout_centerVertical">true</item>
     </style>
 
+    <style name="post_content_subtitle">
+        <item name="android:paddingTop">@dimen/dp_4</item>
+        <item name="android:paddingBottom">@dimen/dp_4</item>
+        <item name="android:paddingLeft">@dimen/dp_8</item>
+        <item name="android:paddingRight">@dimen/dp_8</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/sp_12</item>
+        <item name="android:background">@drawable/corner_bg_white_dp2</item>
+    </style>
 </resources>

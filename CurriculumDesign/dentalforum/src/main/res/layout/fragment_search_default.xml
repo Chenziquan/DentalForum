@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".search.search_default.SearchDefaultFragment">
+    tools:context=".function.search.search_default.SearchDefaultFragment">
 
     <!-- TODO: Update blank fragment layout -->
 

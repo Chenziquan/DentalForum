@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_36"
         android:layout_marginTop="@dimen/dp_14"
-        android:background="@drawable/corner_bg_dp_18"
+        android:background="@drawable/corner_bg_gray_dp_18"
         app:divider="@drawable/divider_horizontal"
         app:showDividers="middle">
 

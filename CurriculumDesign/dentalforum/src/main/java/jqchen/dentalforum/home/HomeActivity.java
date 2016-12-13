@@ -18,12 +18,13 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import jqchen.dentalforum.R;
 import jqchen.dentalforum.common.TabPagerAdapter;
+import jqchen.dentalforum.frame.posts.PostsFragment;
 import jqchen.dentalforum.library.AppActivity;
 import jqchen.dentalforum.library.BaseFragment;
-import jqchen.dentalforum.navigatesigin.NavigateSiginActivity;
-import jqchen.dentalforum.post.PostFragment;
-import jqchen.dentalforum.recommend.RecommendFragment;
-import jqchen.dentalforum.user.UserFragment;
+import jqchen.dentalforum.post.post.them.PostThemActivity;
+import jqchen.dentalforum.user.navigatesigin.NavigateSiginActivity;
+import jqchen.dentalforum.frame.recommend.RecommendFragment;
+import jqchen.dentalforum.frame.user.UserFragment;
 
 public class HomeActivity extends AppActivity {
 
@@ -50,12 +51,37 @@ public class HomeActivity extends AppActivity {
         ButterKnife.bind(this);
         initToolbar();
         initAdapter();
+        setListener();
+        fab.hide();
+    }
+
+    private void setListener() {
+        homeViewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (position == 1) {
+                    fab.show();
+                } else {
+                    fab.hide();
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     private void initAdapter() {
         LinkedHashMap<String, Fragment> map = new LinkedHashMap<>();
         map.put(getString(R.string.fragment_recommend), RecommendFragment.getInstance());
-        map.put(getString(R.string.fragment_post), PostFragment.getInstance());
+        map.put(getString(R.string.fragment_post), PostsFragment.getInstance());
         map.put(getString(R.string.fragment_user), UserFragment.getInstance());
         TabPagerAdapter tabPagerAdapter = new TabPagerAdapter(getSupportFragmentManager(), map);
         homeViewpager.setAdapter(tabPagerAdapter);
@@ -98,7 +124,8 @@ public class HomeActivity extends AppActivity {
                 startActivity(new Intent(HomeActivity.this, NavigateSiginActivity.class));
                 break;
             case R.id.fab:
-                Snackbar.make(fab, getString(R.string.add_post), Snackbar.LENGTH_LONG).show();
+//                Snackbar.make(fab, getString(R.string.add_post), Snackbar.LENGTH_LONG).show();
+                startActivity(new Intent(this, PostThemActivity.class));
                 break;
         }
     }
