@@ -1,6 +1,7 @@
 package jqchen.dentalforum.post.post.them;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
@@ -19,6 +20,7 @@ import butterknife.Unbinder;
 import jqchen.dentalforum.R;
 import jqchen.dentalforum.data.bean.PostThemBean;
 import jqchen.dentalforum.library.BaseFragment;
+import jqchen.dentalforum.post.post.content.PostContentActivity;
 import jqchen.dentalforum.util.ShowToast;
 
 /**
@@ -126,5 +128,8 @@ public class PostThemFragment extends BaseFragment implements PostThemContract.V
     @OnClick(R.id.post_them_deal)
     public void onClick() {
         new ShowToast(getContext()).show("确定");
+        Intent intent = new Intent(this.getHoldingActivity(), PostContentActivity.class);
+        startActivity(intent);
+        getHoldingActivity().finish();
     }
 }

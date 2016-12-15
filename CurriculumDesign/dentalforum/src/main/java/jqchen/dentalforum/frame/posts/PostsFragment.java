@@ -22,6 +22,8 @@ import butterknife.Unbinder;
 import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder;
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
 import jqchen.dentalforum.R;
+import jqchen.dentalforum.common.LinearItemDecoration;
+import jqchen.dentalforum.data.bean.PostBean;
 import jqchen.dentalforum.library.BaseFragment;
 import jqchen.dentalforum.util.ToastUtil;
 
@@ -39,7 +41,8 @@ public class PostsFragment extends BaseFragment implements PostsContract.View, B
     private RecyclerView postHeaderRecycler;
     private Unbinder unbinder;
     private View postHeader, networkErrorView;
-    private List<String> header, posts;
+    private List<String> header;
+    private List<PostBean> posts;
     private PostsAdapter postsAdapter;
     private PostsHeaderAdapter postsHeaderAdapter;
     private PostsPresenter mPresenter;
@@ -107,6 +110,7 @@ public class PostsFragment extends BaseFragment implements PostsContract.View, B
         postsAdapter = new PostsAdapter(R.layout.item_post, posts);
         postsAdapter.addHeaderView(postHeader);
         postRecycler.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        postRecycler.addItemDecoration(new LinearItemDecoration(getResources().getDimensionPixelSize(R.dimen.dp_8)));
         postRecycler.setAdapter(postsAdapter);
 
         postsHeaderAdapter = new PostsHeaderAdapter(R.layout.item_post_header_item, header);
@@ -122,7 +126,7 @@ public class PostsFragment extends BaseFragment implements PostsContract.View, B
     }
 
     @Override
-    public void refresh(List<String> posts) {
+    public void refresh(List<PostBean> posts) {
         this.posts.clear();
         this.posts.addAll(posts);
         this.postsAdapter.notifyDataSetChanged();
@@ -130,7 +134,7 @@ public class PostsFragment extends BaseFragment implements PostsContract.View, B
     }
 
     @Override
-    public void load(List<String> posts) {
+    public void load(List<PostBean> posts) {
         this.posts.addAll(posts);
         this.postsAdapter.loadMoreComplete();
     }

@@ -3,6 +3,8 @@
     package="jqchen.dentalforum">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".app.MyApplication"
@@ -35,6 +37,16 @@
         <activity android:name=".function.search.SearchActivity" />
         <activity android:name=".post.post.them.PostThemActivity" />
         <activity android:name=".post.post.content.PostContentActivity"></activity>
+
+        <activity
+            android:name="cn.finalteam.rxgalleryfinal.ui.activity.MediaActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme_Light.Default" />
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme_Light.Default" />
     </application>
 
 </manifest>

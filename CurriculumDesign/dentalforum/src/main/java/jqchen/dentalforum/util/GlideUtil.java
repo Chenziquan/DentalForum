@@ -20,7 +20,10 @@ import jqchen.dentalforum.R;
  */
 public class GlideUtil {
     private static GlideUtil mInstance;
-    private GlideUtil(){}
+
+    private GlideUtil() {
+    }
+
     public static GlideUtil getInstance() {
         if (mInstance == null) {
             synchronized (GlideUtil.class) {
@@ -43,10 +46,11 @@ public class GlideUtil {
 
     /**
      * 常规加载图片
+     *
      * @param context
-     * @param imageView  图片容器
-     * @param imgUrl  图片地址
-     * @param isFade  是否需要动画
+     * @param imageView 图片容器
+     * @param imgUrl    图片地址
+     * @param isFade    是否需要动画
      */
     public void loadImage(Context context, ImageView imageView,
                           String imgUrl, boolean isFade) {
@@ -69,10 +73,37 @@ public class GlideUtil {
     }
 
     /**
-     * 加载缩略图
      * @param context
-     * @param imageView  图片容器
-     * @param imgUrl  图片地址
+     * @param imageView
+     * @param path
+     * @param isFade
+     */
+    public void loadPathImage(Context context, ImageView imageView,
+                              String path, boolean isFade) {
+        if (isFade) {
+            Glide.with(context)
+                    .load("file://" + path)
+                    .error(R.drawable.glide_error)
+                    .crossFade()
+                    .priority(Priority.NORMAL)
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .into(imageView);
+        } else {
+            Glide.with(context)
+                    .load("file://" + path)
+                    .error(R.drawable.glide_error)
+                    .into(imageView);
+        }
+
+    }
+
+
+    /**
+     * 加载缩略图
+     *
+     * @param context
+     * @param imageView 图片容器
+     * @param imgUrl    图片地址
      */
     public void loadThumbnailImage(Context context, ImageView imageView, String imgUrl) {
         Glide.with(context)
@@ -87,6 +118,7 @@ public class GlideUtil {
 
     /**
      * 加载图片并设置为指定大小
+     *
      * @param context
      * @param imageView
      * @param imgUrl
@@ -107,6 +139,7 @@ public class GlideUtil {
 
     /**
      * 加载图片并对其进行模糊处理
+     *
      * @param context
      * @param imageView
      * @param imgUrl
@@ -124,6 +157,7 @@ public class GlideUtil {
 
     /**
      * 加载圆图
+     *
      * @param context
      * @param imageView
      * @param imgUrl
@@ -141,6 +175,7 @@ public class GlideUtil {
 
     /**
      * 加载模糊的圆角的图片
+     *
      * @param context
      * @param imageView
      * @param imgUrl
@@ -160,6 +195,7 @@ public class GlideUtil {
 
     /**
      * 加载圆角图片
+     *
      * @param context
      * @param imageView
      * @param imgUrl
@@ -179,6 +215,7 @@ public class GlideUtil {
 
     /**
      * 加载模糊的圆角图片
+     *
      * @param context
      * @param imageView
      * @param imgUrl
@@ -199,6 +236,7 @@ public class GlideUtil {
 
     /**
      * 同步加载图片
+     *
      * @param context
      * @param imgUrl
      * @param target
@@ -214,6 +252,7 @@ public class GlideUtil {
 
     /**
      * 加载gif
+     *
      * @param context
      * @param imageView
      * @param imgUrl
@@ -231,11 +270,12 @@ public class GlideUtil {
 
     /**
      * 加载gif的缩略图
+     *
      * @param context
      * @param imageView
      * @param imgUrl
      */
-    public void loadGifThumbnailImage(Context context, ImageView imageView,String imgUrl) {
+    public void loadGifThumbnailImage(Context context, ImageView imageView, String imgUrl) {
         Glide.with(context)
                 .load(imgUrl)
                 .asGif()
@@ -249,6 +289,7 @@ public class GlideUtil {
 
     /**
      * 恢复请求，一般在停止滚动的时候
+     *
      * @param context
      */
     public void resumeRequests(Context context) {
@@ -257,6 +298,7 @@ public class GlideUtil {
 
     /**
      * 暂停请求 正在滚动的时候
+     *
      * @param context
      */
     public void pauseRequests(Context context) {
@@ -265,6 +307,7 @@ public class GlideUtil {
 
     /**
      * 清除磁盘缓存
+     *
      * @param context
      */
     public void clearDiskCache(final Context context) {
@@ -278,6 +321,7 @@ public class GlideUtil {
 
     /**
      * 清除内存缓存
+     *
      * @param context
      */
     public void clearMemory(Context context) {

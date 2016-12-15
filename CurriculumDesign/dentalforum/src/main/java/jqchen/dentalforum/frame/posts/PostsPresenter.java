@@ -2,6 +2,7 @@ package jqchen.dentalforum.frame.posts;
 
 import java.util.List;
 
+import jqchen.dentalforum.data.bean.PostBean;
 import jqchen.dentalforum.data.source.PostDataSource;
 import jqchen.dentalforum.data.source.repository.PostRepository;
 
@@ -25,7 +26,7 @@ public class PostsPresenter implements PostsContract.Presenter {
             }
 
             @Override
-            public void onLoadPost(List<String> posts) {
+            public void onLoadPost(List<PostBean> posts) {
                 if (isRefresh) {
                     mView.refresh(posts);
                 } else {
@@ -51,7 +52,7 @@ public class PostsPresenter implements PostsContract.Presenter {
             }
 
             @Override
-            public void onLoadPost(List<String> posts) {
+            public void onLoadPost(List<PostBean> posts) {
 
             }
 

@@ -77,8 +77,15 @@
     <string name="post_content_title">发表主题</string>
     <string name="post_content_cancel">取消</string>
     <string name="post_content_submit">发表</string>
-    <string name="post_content_hint_title">输入内容</string>
-    <string name="post_content_hint_content">输入标题</string>
+    <string name="post_content_hint_title">输入标题</string>
+    <string name="post_content_hint_content">输入正文</string>
+    <string name="post_content_null_title_error">请输入标题</string>
+    <string name="post_content_null_content_error">请输入正文</string>
+    <string name="post_content_post_success">发表成功</string>
+    <string name="post_cancel_title">退出发帖</string>
+    <string name="post_cancel_content">你的帖子还没有提交，退出后内容将会清空</string>
+    <string name="post_cancel_cancel">取消</string>
+    <string name="post_cancel_deal">确定</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

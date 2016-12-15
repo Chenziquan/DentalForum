@@ -49,43 +49,74 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <android.support.v7.widget.LinearLayoutCompat
+        <ImageView
+            android:id="@+id/post_content_imagepicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/dp_8"
+            android:src="@drawable/icon_user_default" />
+
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/them_bg_color"
-            android:orientation="vertical"
-            app:divider="@drawable/divider_vertical"
-            app:showDividers="middle">
+            android:layout_above="@id/post_content_imagepicker">
 
-            <EditText
-                android:id="@+id/post_content_title"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dp_10"
-                android:background="@android:color/transparent"
-                android:hint="@string/post_content_hint_title"
-                android:inputType="textWebEditText"
-                android:textColor="@color/text_color_4d"
-                android:textColorHint="@color/text_color_cc"
-                android:textSize="@dimen/sp_13" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/post_content_content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dp_10"
-                android:background="@android:color/transparent"
-                android:hint="@string/post_content_hint_content"
-                android:inputType="text"
-                android:textColor="@color/text_color_4d"
-                android:textColorHint="@color/text_color_cc"
-                android:textSize="@dimen/sp_13" />
 
-        </android.support.v7.widget.LinearLayoutCompat>
-    </android.support.v4.widget.NestedScrollView>
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/them_bg_color"
+                    android:orientation="vertical"
+                    app:divider="@drawable/divider_vertical"
+                    app:showDividers="middle">
+
+                    <EditText
+                        android:id="@+id/post_content_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_10"
+                        android:background="@android:color/transparent"
+                        android:hint="@string/post_content_hint_title"
+                        android:inputType="textMultiLine"
+                        android:singleLine="false"
+                        android:textColor="@color/text_color_4d"
+                        android:textColorHint="@color/text_color_cc"
+                        android:textSize="@dimen/sp_13" />
+
+                    <EditText
+                        android:id="@+id/post_content_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_10"
+                        android:background="@android:color/transparent"
+                        android:gravity="start"
+                        android:hint="@string/post_content_hint_content"
+                        android:inputType="textMultiLine"
+                        android:singleLine="false"
+                        android:textColor="@color/text_color_4d"
+                        android:textColorHint="@color/text_color_cc"
+                        android:textSize="@dimen/sp_13" />
+
+                </android.support.v7.widget.LinearLayoutCompat>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/post_content_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+    </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>
