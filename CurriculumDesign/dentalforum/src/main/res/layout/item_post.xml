@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:background="@drawable/corner_bg_gray_dp_8"
+            android:background="@drawable/corner_bg_gray_dp_10"
             android:paddingBottom="@dimen/dp_2"
             android:paddingLeft="@dimen/dp_8"
             android:paddingRight="@dimen/dp_8"

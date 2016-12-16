@@ -36,8 +36,7 @@
         <activity android:name=".user.register.RegisterNextActivity" />
         <activity android:name=".function.search.SearchActivity" />
         <activity android:name=".post.post.them.PostThemActivity" />
-        <activity android:name=".post.post.content.PostContentActivity"></activity>
-
+        <activity android:name=".post.post.content.PostContentActivity" />
         <activity
             android:name="cn.finalteam.rxgalleryfinal.ui.activity.MediaActivity"
             android:exported="true"
@@ -47,6 +46,7 @@
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme_Light.Default" />
+        <activity android:name=".post.detail.PostDetailActivity"></activity>
     </application>
 
 </manifest>

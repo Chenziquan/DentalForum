@@ -87,6 +87,13 @@
     <string name="post_cancel_cancel">取消</string>
     <string name="post_cancel_deal">确定</string>
 
+    <string name="menu_string_refresh">刷新</string>
+    <string name="menu_string_collect">收藏</string>
+
+    <string name="post_detail_comment_hint">写评论</string>
+    <string name="post_detail_header_landlord">楼主</string>
+    <string name="post_detail_header_comment">全部评论</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

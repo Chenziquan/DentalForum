@@ -1,6 +1,7 @@
 package jqchen.dentalforum.frame.posts;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -25,6 +26,7 @@ import jqchen.dentalforum.R;
 import jqchen.dentalforum.common.LinearItemDecoration;
 import jqchen.dentalforum.data.bean.PostBean;
 import jqchen.dentalforum.library.BaseFragment;
+import jqchen.dentalforum.post.detail.PostDetailActivity;
 import jqchen.dentalforum.util.ToastUtil;
 
 /**
@@ -95,6 +97,8 @@ public class PostsFragment extends BaseFragment implements PostsContract.View, B
             @Override
             public void SimpleOnItemClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
                 ToastUtil.showLong(getContext(), "帖子内容");
+                Intent intent = new Intent(getHoldingActivity(), PostDetailActivity.class);
+                startActivity(intent);
             }
         });
         postsAdapter.setOnLoadMoreListener(this);
