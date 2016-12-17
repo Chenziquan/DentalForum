@@ -75,5 +75,7 @@
 
     <color name="navigatesigin_color">#74BFF3</color>
 
+    <color name="post_comment_reply_bg">#F3F4F7</color>
+
 
 </resources>

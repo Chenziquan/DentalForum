@@ -24,7 +24,12 @@ public class PostDetailActivity extends AppActivity {
 
     @Override
     protected BaseFragment getFirstFragment() {
-        return null;
+        return PostDetailFragment.getInstance();
+    }
+
+    @Override
+    protected int getFragmentContentId() {
+        return R.id.post_detail_fragment;
     }
 
     @Override
@@ -40,18 +45,18 @@ public class PostDetailActivity extends AppActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_post_detail,menu);
+        getMenuInflater().inflate(R.menu.menu_post_detail, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.post_detail_refresh:
-                Log.e("menu","refresh");
+                Log.e("menu", "refresh");
                 break;
             case R.id.post_detail_collect:
-                Log.e("menu","collect");
+                Log.e("menu", "collect");
                 break;
         }
         return super.onOptionsItemSelected(item);
