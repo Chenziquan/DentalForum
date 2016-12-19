@@ -1,0 +1,59 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="jqchen.dentalforum.post.detail.reply.PostReplyFragment">
+
+    <ViewStub
+        android:id="@+id/network_error_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout="@layout/network_error" />
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:divider="@drawable/divider_vertical"
+        app:showDividers="middle">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/post_reply_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin">
+
+            <EditText
+                android:id="@+id/post_reply_input"
+                style="@style/frame_edittext"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_36"
+                android:layout_weight="1"
+                android:background="@drawable/corner_bg_gray_dp_4"
+                android:hint="@string/post_detail_comment_hint" />
+
+            <TextView
+                android:id="@+id/post_reply_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginStart="@dimen/dp_8"
+                android:background="@drawable/corner_bg_them_dp2"
+                android:padding="@dimen/dp_4"
+                android:text="@string/post_detail_comment_submit"
+                android:textColor="@color/them_color"
+                android:textSize="@dimen/sp_13" />
+        </LinearLayout>
+    </android.support.v7.widget.LinearLayoutCompat>
+
+</FrameLayout>

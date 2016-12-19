@@ -46,7 +46,8 @@
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme_Light.Default" />
-        <activity android:name=".post.detail.PostDetailActivity"></activity>
+        <activity android:name=".post.detail.comment.PostDetailActivity" />
+        <activity android:name=".post.detail.reply.PostReplyActivity"></activity>
     </application>
 
 </manifest>

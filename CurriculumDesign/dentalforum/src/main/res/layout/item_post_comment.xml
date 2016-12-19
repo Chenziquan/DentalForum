@@ -62,7 +62,7 @@
             android:textColor="@color/text_color_4d"
             android:textSize="@dimen/sp_14" />
 
-        <LinearLayout
+        <android.support.v7.widget.RecyclerView
             android:id="@+id/post_detail_comment_reply"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
             android:background="@color/post_comment_reply_bg"
             android:orientation="vertical"
             android:padding="@dimen/dp_8"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
     </LinearLayout>
 

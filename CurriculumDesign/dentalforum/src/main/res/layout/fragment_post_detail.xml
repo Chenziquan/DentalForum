@@ -2,14 +2,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="jqchen.dentalforum.post.detail.PostDetailFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".post.detail.comment.PostDetailFragment">
+
+    <ViewStub
+        android:id="@+id/network_error_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout="@layout/network_error"/>
 
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:showDividers="middle"
+        app:divider="@drawable/divider_vertical"
         android:orientation="vertical">
 
         <android.support.v7.widget.RecyclerView
+            android:id="@+id/post_detail_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
@@ -24,6 +34,7 @@
             android:paddingRight="@dimen/activity_horizontal_margin">
 
             <EditText
+                android:id="@+id/post_detail_input"
                 style="@style/frame_edittext"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dp_36"
@@ -31,14 +42,28 @@
                 android:background="@drawable/corner_bg_gray_dp_4"
                 android:hint="@string/post_detail_comment_hint" />
 
+            <TextView
+                android:id="@+id/post_detail_comment_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginStart="@dimen/dp_8"
+                android:background="@drawable/corner_bg_them_dp2"
+                android:padding="@dimen/dp_4"
+                android:text="@string/post_detail_comment_submit"
+                android:textColor="@color/them_color"
+                android:textSize="@dimen/sp_13" />
+
             <CheckBox
+                android:id="@+id/post_detail_like"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_8"
                 android:layout_marginStart="@dimen/dp_8"
                 android:button="@null"
                 android:checked="false"
-                android:drawableLeft="@drawable/post_detail_like" />
+                android:drawableLeft="@drawable/post_detail_like"
+                android:drawableStart="@drawable/post_detail_like"/>
         </LinearLayout>
     </android.support.v7.widget.LinearLayoutCompat>
 

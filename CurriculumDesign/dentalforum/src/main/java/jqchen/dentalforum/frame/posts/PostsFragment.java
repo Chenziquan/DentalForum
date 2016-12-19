@@ -26,7 +26,7 @@ import jqchen.dentalforum.R;
 import jqchen.dentalforum.common.LinearItemDecoration;
 import jqchen.dentalforum.data.bean.PostBean;
 import jqchen.dentalforum.library.BaseFragment;
-import jqchen.dentalforum.post.detail.PostDetailActivity;
+import jqchen.dentalforum.post.detail.comment.PostDetailActivity;
 import jqchen.dentalforum.util.ToastUtil;
 
 /**
