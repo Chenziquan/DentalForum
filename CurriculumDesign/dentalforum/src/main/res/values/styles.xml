@@ -108,4 +108,19 @@
         <item name="android:textSize">@dimen/sp_12</item>
         <item name="android:background">@drawable/corner_bg_white_dp2</item>
     </style>
+
+    <style name="user_info_relative">
+        <item name="android:paddingTop">@dimen/dp_8</item>
+        <item name="android:paddingBottom">@dimen/dp_8</item>
+    </style>
+
+    <style name="user_info_text">
+        <item name="android:textColor">@color/text_color_4d</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+    </style>
+
+    <style name="user_info_subtext">
+        <item name="android:textColor">@color/text_color_66</item>
+        <item name="android:textSize">@dimen/sp_12</item>
+    </style>
 </resources>

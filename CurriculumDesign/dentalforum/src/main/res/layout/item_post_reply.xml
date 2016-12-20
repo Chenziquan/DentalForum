@@ -3,6 +3,8 @@
     android:id="@+id/item_post_reply"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/dp_60"
+    android:layout_marginStart="@dimen/dp_60"
     android:layout_marginTop="@dimen/dp_8"
     android:lineSpacingExtra="@dimen/dp_2"
     android:textColor="@color/text_color_99"

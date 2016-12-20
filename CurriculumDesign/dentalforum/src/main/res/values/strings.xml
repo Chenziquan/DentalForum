@@ -112,6 +112,12 @@
 
     <string name="post_reply_bean">post_reply_bean</string>
 
+    <string name="user_info_title">个人中心</string>
+    <string name="user_info_protrait">头像</string>
+    <string name="user_info_name">用户名</string>
+
+    <string name="user_posts_title">我的帖子</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -1,6 +1,7 @@
 package jqchen.dentalforum.frame.user;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
@@ -16,6 +17,8 @@ import butterknife.Unbinder;
 import jqchen.dentalforum.R;
 import jqchen.dentalforum.data.bean.UserBean;
 import jqchen.dentalforum.library.BaseFragment;
+import jqchen.dentalforum.user.info.UserInfoActivity;
+import jqchen.dentalforum.user.login.LoginActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -98,6 +101,18 @@ public class UserFragment extends BaseFragment implements UserContract.View {
     }
 
     @Override
+    public void goLoginIn() {
+        Intent intent = new Intent(getHoldingActivity(), LoginActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void goUserInfo() {
+        Intent intent = new Intent(getHoldingActivity(), UserInfoActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
     public void setPresenter(Object presenter) {
 
     }
@@ -119,6 +134,7 @@ public class UserFragment extends BaseFragment implements UserContract.View {
                 mPresenter.signIn();
                 break;
             case R.id.user_sign_in:
+                goUserInfo();
                 break;
             case R.id.user_posts:
                 break;

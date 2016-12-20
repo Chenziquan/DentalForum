@@ -17,4 +17,5 @@
         <item name="android:layout_marginLeft">@dimen/dp_4</item>
         <item name="android:layout_marginStart">@dimen/dp_4</item>
     </style>
+
 </resources>

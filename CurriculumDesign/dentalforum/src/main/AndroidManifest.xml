@@ -47,7 +47,9 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme_Light.Default" />
         <activity android:name=".post.detail.comment.PostDetailActivity" />
-        <activity android:name=".post.detail.reply.PostReplyActivity"></activity>
+        <activity android:name=".post.detail.reply.PostReplyActivity" />
+        <activity android:name=".user.info.UserInfoActivity" />
+        <activity android:name=".user.posts.UserPostsActivity"></activity>
     </application>
 
 </manifest>

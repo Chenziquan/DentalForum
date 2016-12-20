@@ -50,7 +50,7 @@ public class PostReplyFragment extends BaseFragment implements PostReplyContract
         // Required empty public constructor
     }
 
-    public static PostReplyFragment getInstance(){
+    public static PostReplyFragment getInstance() {
         return new PostReplyFragment();
     }
 
@@ -94,6 +94,7 @@ public class PostReplyFragment extends BaseFragment implements PostReplyContract
     private void setAdapter() {
         postReplyRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         postReplyAdapter = new PostReplyAdapter(R.layout.item_post_reply, commentBean.getReplyBeen());
+        postReplyAdapter.addHeaderView(postReplyHeader);
         postReplyRecycler.setAdapter(postReplyAdapter);
     }
 

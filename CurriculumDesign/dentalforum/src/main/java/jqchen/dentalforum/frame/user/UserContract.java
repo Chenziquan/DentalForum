@@ -12,6 +12,8 @@ public interface UserContract {
     interface View extends BaseView{
         void showSignOut();
         void showSignIn(UserBean bean);
+        void goLoginIn();
+        void goUserInfo();
     }
     interface Presenter extends BasePresenter{
         void getSignStatus();
