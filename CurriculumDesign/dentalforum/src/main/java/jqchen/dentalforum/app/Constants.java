@@ -7,4 +7,5 @@ package jqchen.dentalforum.app;
 public class Constants {
     private static String IP = "114.55.64.30";
     public static final String DOMAIN_API = "http://" + IP + ":8080/migocoo/";
+    public static final String Upload_Pic = "image";
 }

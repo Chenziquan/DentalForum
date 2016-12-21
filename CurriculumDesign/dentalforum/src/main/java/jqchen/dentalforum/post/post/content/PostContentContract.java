@@ -15,6 +15,7 @@ public interface PostContentContract {
         void showContentNullError();
         void showPostSuccess();
         void showPicture(List<String> strings);
+        void addUploadPicture(String url);
     }
     interface Presenter extends BasePresenter{
         void PostSubmit(String title,String content,List<String> list);

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 
@@ -37,7 +38,7 @@ public class PostContentActivity extends AppActivity implements PostContentContr
     private ForumAlertDialog forumAlertDialog;
     private ShowToast mShowToast;
     private PostContentPresenter mPresenter;
-    private List<String> pictures;
+    private List<String> localPictures, uploadPicture;
     private PostContentAdapter postContentAdapter;
 
     @Override
@@ -63,8 +64,9 @@ public class PostContentActivity extends AppActivity implements PostContentContr
         forumAlertDialog.setCancel(getString(R.string.post_cancel_cancel));
         forumAlertDialog.setDeal(getString(R.string.post_cancel_deal));
         forumAlertDialog.setCallBack(this);
-        pictures = new ArrayList<>();
-        postContentAdapter = new PostContentAdapter(R.layout.item_post_content_image, pictures);
+        localPictures = new ArrayList<>();
+        uploadPicture = new ArrayList<>();
+        postContentAdapter = new PostContentAdapter(R.layout.item_post_content_image, localPictures);
         postContentRecycler.setLayoutManager(new GridLayoutManager(this, 3));
         postContentRecycler.setAdapter(postContentAdapter);
     }
@@ -88,7 +90,7 @@ public class PostContentActivity extends AppActivity implements PostContentContr
             case R.id.post_content_submit:
                 mPresenter.PostSubmit(postContentTitle.getText().toString(),
                         postContentContent.getText().toString(),
-                        pictures);
+                        localPictures);
                 break;
             case R.id.post_content_imagepicker:
                /* RxGalleryFinal.with(this)
@@ -128,6 +130,15 @@ public class PostContentActivity extends AppActivity implements PostContentContr
     }
 
     @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            forumAlertDialog.show();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
     public void showTileNullError() {
         postContentTitle.setError(getString(R.string.post_content_null_title_error));
     }
@@ -144,8 +155,14 @@ public class PostContentActivity extends AppActivity implements PostContentContr
 
     @Override
     public void showPicture(List<String> strings) {
-        pictures.addAll(strings);
+        localPictures.addAll(strings);
         postContentAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void addUploadPicture(String url) {
+        uploadPicture.add(url);
+        mShowToast.show(url);
     }
 
     @Override

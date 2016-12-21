@@ -1,6 +1,7 @@
 package jqchen.dentalforum.data.source;
 
 import jqchen.dentalforum.base.BaseCallBack;
+import jqchen.dentalforum.base.SimpleCallBack;
 import jqchen.dentalforum.data.bean.UserBean;
 
 /**
@@ -24,5 +25,7 @@ public interface UserDataSource {
 
     void SignOut(SignOutCallBack callBack);
 
-    void SignIn(SignInCallBack callBack);
+    void goUserPosts(SimpleCallBack callBack);
+
+    void goUserCollection(SimpleCallBack callBack);
 }

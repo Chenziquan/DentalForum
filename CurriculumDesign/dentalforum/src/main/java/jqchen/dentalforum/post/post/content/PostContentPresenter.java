@@ -45,8 +45,13 @@ public class PostContentPresenter implements PostContentContract.Presenter {
     public void AddPicture(List<String> strings) {
         PostContentRepository.getInstance().addPicture(strings, new PostContentDataSource.UploadPictureCallBack() {
             @Override
-            public void onSuccess(List<String> strings) {
+            public void onAddPicture(List<String> strings) {
                 mView.showPicture(strings);
+            }
+
+            @Override
+            public void onUploadSuccess(String url) {
+                mView.addUploadPicture(url);
             }
 
             @Override

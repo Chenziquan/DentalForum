@@ -1,5 +1,6 @@
 package jqchen.dentalforum.data.source.repository;
 
+import jqchen.dentalforum.base.SimpleCallBack;
 import jqchen.dentalforum.data.source.UserDataSource;
 import jqchen.dentalforum.data.source.local.LocalUserDataSource;
 import jqchen.dentalforum.data.source.remote.RemoteUserDataSource;
@@ -39,9 +40,15 @@ public class UserRepository implements UserDataSource {
         localUserDataSource.SignOut(callBack);
     }
 
+
     @Override
-    public void SignIn(SignInCallBack callBack) {
-        remoteUserDataSource.SignIn(callBack);
+    public void goUserPosts(SimpleCallBack callBack) {
+        this.localUserDataSource.goUserPosts(callBack);
+    }
+
+    @Override
+    public void goUserCollection(SimpleCallBack callBack) {
+        this.localUserDataSource.goUserCollection(callBack);
     }
 
 }

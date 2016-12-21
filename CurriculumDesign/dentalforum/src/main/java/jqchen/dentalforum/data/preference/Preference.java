@@ -22,6 +22,10 @@ public class Preference {
         return preferences.getString(PreferenceHelper.UserName, "");
     }
 
+    public String getUserTel(){
+        return preferences.getString(PreferenceHelper.UserTel,"");
+    }
+
     public boolean getAppStatus() {
         return preferences.getBoolean(PreferenceHelper.AppStatus, false);
     }
@@ -51,6 +55,11 @@ public class Preference {
     public void setSignStatus(boolean signStatus) {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean(PreferenceHelper.SignStatus, signStatus);
+        editor.apply();
+    }
+    public void setUserTel(String tel){
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(PreferenceHelper.UserTel, tel);
         editor.apply();
     }
 

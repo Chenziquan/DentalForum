@@ -18,12 +18,12 @@ public class UserPostsActivity extends AppActivity {
 
     @Override
     protected BaseFragment getFirstFragment() {
-        return null;
+        return UserPostsFragment.getInstance();
     }
 
     @Override
     protected int getFragmentContentId() {
-        return super.getFragmentContentId();
+        return R.id.user_posts_fragment;
     }
 
     @Override

@@ -18,7 +18,8 @@ public interface PostContentDataSource {
     }
 
     interface UploadPictureCallBack extends BaseCallBack {
-        void onSuccess(List<String> strings);
+        void onAddPicture(List<String> strings);
+        void onUploadSuccess(String url);
     }
 
     void addPicture(List<String> strings, UploadPictureCallBack callBack);

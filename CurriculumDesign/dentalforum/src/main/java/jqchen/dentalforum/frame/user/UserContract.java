@@ -14,10 +14,13 @@ public interface UserContract {
         void showSignIn(UserBean bean);
         void goLoginIn();
         void goUserInfo();
+        void goUserPosts();
+        void goUserCollection();
     }
     interface Presenter extends BasePresenter{
         void getSignStatus();
         void signOut();
-        void signIn();
+        void goUserPosts();
+        void goUserCollection();
     }
 }

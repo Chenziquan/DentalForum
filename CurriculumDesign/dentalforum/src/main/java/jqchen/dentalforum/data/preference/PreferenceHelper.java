@@ -6,6 +6,7 @@ package jqchen.dentalforum.data.preference;
  */
 public class PreferenceHelper {
     public static String ShareName = "JQChen";
+    public static String UserTel = "user_tel";
     public static String UserName = "user_name";
     public static String UserId = "user_id";
     public static String AppStatus = "app_status";

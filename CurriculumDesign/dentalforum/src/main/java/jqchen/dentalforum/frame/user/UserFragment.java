@@ -17,8 +17,10 @@ import butterknife.Unbinder;
 import jqchen.dentalforum.R;
 import jqchen.dentalforum.data.bean.UserBean;
 import jqchen.dentalforum.library.BaseFragment;
+import jqchen.dentalforum.user.collection.UserCollectionActivity;
 import jqchen.dentalforum.user.info.UserInfoActivity;
 import jqchen.dentalforum.user.login.LoginActivity;
+import jqchen.dentalforum.user.posts.UserPostsActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -113,6 +115,12 @@ public class UserFragment extends BaseFragment implements UserContract.View {
     }
 
     @Override
+    public void goUserPosts() {
+        Intent intent = new Intent(getHoldingActivity(), UserPostsActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
     public void setPresenter(Object presenter) {
 
     }
@@ -131,20 +139,29 @@ public class UserFragment extends BaseFragment implements UserContract.View {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.user_sign_out:
-                mPresenter.signIn();
+                goLoginIn();
                 break;
             case R.id.user_sign_in:
                 goUserInfo();
                 break;
             case R.id.user_posts:
+                mPresenter.goUserPosts();
                 break;
             case R.id.user_wealth:
                 break;
             case R.id.user_collection:
+                mPresenter.goUserCollection();
                 break;
             case R.id.user_exit_login:
                 mPresenter.signOut();
                 break;
         }
+    }
+
+
+    @Override
+    public void goUserCollection() {
+        Intent intent = new Intent(getHoldingActivity(), UserCollectionActivity.class);
+        startActivity(intent);
     }
 }

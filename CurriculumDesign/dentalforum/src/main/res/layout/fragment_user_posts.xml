@@ -4,6 +4,12 @@
     android:layout_height="match_parent"
     tools:context="jqchen.dentalforum.user.posts.UserPostsFragment">
 
+    <ViewStub
+        android:id="@+id/network_error_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout="@layout/network_error"/>
+
     <cn.bingoogolapple.refreshlayout.BGARefreshLayout
         android:id="@+id/user_posts_refresh"
         android:layout_width="match_parent"
