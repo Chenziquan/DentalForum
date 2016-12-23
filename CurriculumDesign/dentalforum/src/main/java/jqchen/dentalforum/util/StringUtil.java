@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -640,5 +641,22 @@ public class StringUtil {
      */
     public static String checkLength(String string, int maxLength) {
         return checkLength(string, maxLength, "…");
+    }
+
+    public static String cosUrlTransfer(String url) {
+        return url.replace("file", "costj");
+    }
+
+    public static String listDotSplit(List<String> list) {
+        StringBuilder stringBuffer = new StringBuilder();
+        for (int i = 0; i < list.size(); i++) {
+            if (i != list.size() - 1) {
+                stringBuffer.append(list.get(i)).append(",");
+            } else {
+                stringBuffer.append(list.get(i));
+            }
+
+        }
+        return stringBuffer.toString();
     }
 }

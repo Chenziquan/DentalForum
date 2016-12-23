@@ -19,7 +19,7 @@ import jqchen.dentalforum.data.bean.UserBean;
 import jqchen.dentalforum.library.BaseFragment;
 import jqchen.dentalforum.user.collection.UserCollectionActivity;
 import jqchen.dentalforum.user.info.UserInfoActivity;
-import jqchen.dentalforum.user.login.LoginActivity;
+import jqchen.dentalforum.user.navigatesigin.NavigateSiginActivity;
 import jqchen.dentalforum.user.posts.UserPostsActivity;
 
 /**
@@ -104,7 +104,7 @@ public class UserFragment extends BaseFragment implements UserContract.View {
 
     @Override
     public void goLoginIn() {
-        Intent intent = new Intent(getHoldingActivity(), LoginActivity.class);
+        Intent intent = new Intent(getHoldingActivity(), NavigateSiginActivity.class);
         startActivity(intent);
     }
 

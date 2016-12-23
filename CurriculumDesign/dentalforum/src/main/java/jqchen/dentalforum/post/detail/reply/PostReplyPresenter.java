@@ -2,7 +2,7 @@ package jqchen.dentalforum.post.detail.reply;
 
 import java.util.List;
 
-import jqchen.dentalforum.data.bean.CommentBean;
+import jqchen.dentalforum.data.bean.PostCommentBean;
 
 /**
  * Created by jqchen on 2016/12/19.
@@ -26,7 +26,7 @@ public class PostReplyPresenter implements PostReplyContract.Presenter {
     }
 
     @Override
-    public void reply(int commentId, String content, List<CommentBean.ReplyBean> list) {
+    public void reply(int commentId, String content, List<PostCommentBean.SecCommentBean> list) {
 
     }
 

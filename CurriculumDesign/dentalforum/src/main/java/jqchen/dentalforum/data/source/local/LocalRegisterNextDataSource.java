@@ -2,6 +2,7 @@ package jqchen.dentalforum.data.source.local;
 
 import android.text.TextUtils;
 
+import jqchen.dentalforum.base.SimpleCallBack;
 import jqchen.dentalforum.data.source.RegisterNextDataSource;
 
 /**
@@ -9,17 +10,18 @@ import jqchen.dentalforum.data.source.RegisterNextDataSource;
  * Use to
  */
 public class LocalRegisterNextDataSource implements RegisterNextDataSource {
+
     @Override
-    public void sendCode(String telnum, RegisterSendCodeCallBack callBack) {
+    public void sendCode(String telnum, SimpleCallBack callBack) {
         if (TextUtils.isEmpty(telnum)){
-            callBack.onError();
+            callBack.onFail();
             return;
         }
         callBack.onSuccess();
     }
 
     @Override
-    public void registerNext(String telnum, String code, RegisterNextCallBack callBack) {
+    public void registerNext(String telnum, String code, String passowrd, RegisterNextCallBack callBack) {
 
     }
 }

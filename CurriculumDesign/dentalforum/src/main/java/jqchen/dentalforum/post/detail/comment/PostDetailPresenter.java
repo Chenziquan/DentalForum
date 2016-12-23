@@ -3,8 +3,8 @@ package jqchen.dentalforum.post.detail.comment;
 import java.util.List;
 
 import jqchen.dentalforum.base.SimpleCallBack;
-import jqchen.dentalforum.data.bean.CommentBean;
 import jqchen.dentalforum.data.bean.PostBean;
+import jqchen.dentalforum.data.bean.PostCommentBean;
 import jqchen.dentalforum.data.source.PostDetailDataSource;
 import jqchen.dentalforum.data.source.repository.PostDetailRepository;
 
@@ -38,12 +38,17 @@ public class PostDetailPresenter implements PostDetailContract.Presenter {
     public void getComment(int postId, int page, int size, final boolean isRefresh) {
         PostDetailRepository.getInstance().getComment(postId, page, size, new PostDetailDataSource.PostCommentCallBack() {
             @Override
-            public void onGetComment(List<CommentBean> list) {
+            public void onGetComment(List<PostCommentBean> list) {
                 if (isRefresh) {
                     mView.setCommentRefresh(list);
                 } else {
                     mView.setCommentLoad(list);
                 }
+            }
+
+            @Override
+            public void onLoadCommentFinish() {
+                mView.onLoadCommentFinish();
             }
 
             @Override
@@ -54,7 +59,7 @@ public class PostDetailPresenter implements PostDetailContract.Presenter {
     }
 
     @Override
-    public void deleteComment(int postId, int commentId, List<CommentBean> list, int position) {
+    public void deleteComment(int postId, int commentId, List<PostCommentBean> list, int position) {
         PostDetailRepository.getInstance().deleteComment(postId, commentId, list, position, new SimpleCallBack() {
             @Override
             public void onSuccess() {
@@ -74,7 +79,7 @@ public class PostDetailPresenter implements PostDetailContract.Presenter {
     }
 
     @Override
-    public void comment(int postId, String content, List<CommentBean> list) {
+    public void comment(int postId, String content, List<PostCommentBean> list) {
         PostDetailRepository.getInstance().comment(postId, content, list, new PostDetailDataSource.PostReplyCallBack() {
             @Override
             public void onContentNull() {
@@ -94,7 +99,7 @@ public class PostDetailPresenter implements PostDetailContract.Presenter {
     }
 
     @Override
-    public void reply(int postId, int commentId, String content, List<CommentBean> list, final int position) {
+    public void reply(int postId, int commentId, String content, List<PostCommentBean> list, final int position) {
         PostDetailRepository.getInstance().reply(postId, commentId, content, list, position, new PostDetailDataSource.PostReplyCallBack() {
             @Override
             public void onContentNull() {
@@ -124,6 +129,26 @@ public class PostDetailPresenter implements PostDetailContract.Presenter {
             @Override
             public void onFail() {
                 mView.setLike(!isLike);
+            }
+
+            @Override
+            public void onDataNotAvailable() {
+                mView.showError();
+            }
+        });
+    }
+
+    @Override
+    public void postCollect(int postId) {
+        PostDetailRepository.getInstance().postCollect(postId, new SimpleCallBack() {
+            @Override
+            public void onSuccess() {
+                mView.showCollectSuccess();
+            }
+
+            @Override
+            public void onFail() {
+                mView.showCollectFail();
             }
 
             @Override

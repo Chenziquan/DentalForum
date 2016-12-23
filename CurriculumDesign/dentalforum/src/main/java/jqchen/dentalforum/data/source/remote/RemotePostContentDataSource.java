@@ -3,12 +3,14 @@ package jqchen.dentalforum.data.source.remote;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.alibaba.sdk.android.oss.model.PutObjectResult;
-
 import java.util.List;
 
+import jqchen.dentalforum.app.Constants;
+import jqchen.dentalforum.app.MyApplication;
 import jqchen.dentalforum.data.source.PostContentDataSource;
-import jqchen.dentalforum.http.alipay.PutObjectSamples;
+import jqchen.dentalforum.http.cos.BizServer;
+import jqchen.dentalforum.http.cos.PutObjectSamples;
+import jqchen.dentalforum.util.StringUtil;
 
 /**
  * Created by jqchen on 2016/12/15.
@@ -19,33 +21,33 @@ public class RemotePostContentDataSource implements PostContentDataSource {
     public void addPicture(final List<String> strings, final UploadPictureCallBack callBack) {
         if (strings != null && strings.size() != 0) {
             callBack.onAddPicture(strings);
-            new Thread(new Runnable() {
+            BizServer bizServer = BizServer.getInstance(MyApplication.getInstance());
+            bizServer.setListPath(strings);
+            bizServer.setFileId(Constants.Upload_Pic);
+            jqchen.dentalforum.base.UploadPictureCallBack uploadPictureCallBack = new jqchen.dentalforum.base.UploadPictureCallBack() {
                 @Override
-                public void run() {
-                    new PutObjectSamples(strings.get(0), new jqchen.dentalforum.base.UploadPictureCallBack() {
-                        @Override
-                        public void onProgress(long progress) {
+                public void onProgress(long progress) {
+                    Log.e("progress", String.valueOf(progress));
+                }
 
-                        }
-
-                        @Override
-                        public void onCancel() {
-
-                        }
-
-                        @Override
-                        public void onSuccess(PutObjectResult result) {
-                            Log.e("upload", result.getETag()+"内容");
-                        }
-
-                        @Override
-                        public void onFail(String string) {
-                            Log.e("upload", "fail");
-                        }
-                    }).asyncPutObjectFromLocalFile();
+                @Override
+                public void onCancel() {
 
                 }
-            }).start();
+
+                @Override
+                public void onSuccess(String result) {
+                    Log.e("成功", StringUtil.cosUrlTransfer(result));
+                    callBack.onUploadSuccess(StringUtil.cosUrlTransfer(result));
+                }
+
+                @Override
+                public void onFail(String string) {
+                    Log.e("fail", string);
+                }
+            };
+            PutObjectSamples putObjectSamples = new PutObjectSamples(uploadPictureCallBack, PutObjectSamples.PUT_TYPE.LIST);
+            putObjectSamples.execute(bizServer);
         }
 
 

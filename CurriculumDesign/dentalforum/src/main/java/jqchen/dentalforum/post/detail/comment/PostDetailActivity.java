@@ -1,5 +1,6 @@
 package jqchen.dentalforum.post.detail.comment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -14,6 +15,7 @@ import butterknife.OnClick;
 import jqchen.dentalforum.R;
 import jqchen.dentalforum.library.AppActivity;
 import jqchen.dentalforum.library.BaseFragment;
+import jqchen.dentalforum.util.StringUtil;
 
 public class PostDetailActivity extends AppActivity {
 
@@ -21,10 +23,19 @@ public class PostDetailActivity extends AppActivity {
     TextView postDetailTitle;
     @BindView(R.id.post_detail_toolbar)
     Toolbar postDetailToolbar;
+    private String title;
+    private int postId;
+    private PostDetailFragment postDetailFragment;
 
     @Override
     protected BaseFragment getFirstFragment() {
-        return PostDetailFragment.getInstance();
+        Intent intent = getIntent();
+        postId = intent.getIntExtra(getString(R.string.post_id), 0);
+        title = intent.getStringExtra(getString(R.string.post_title));
+        Bundle bundle = new Bundle();
+        bundle.putInt(getString(R.string.post_id), postId);
+        postDetailFragment = PostDetailFragment.getInstance(bundle);
+        return postDetailFragment;
     }
 
     @Override
@@ -37,6 +48,9 @@ public class PostDetailActivity extends AppActivity {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
         initToolBar();
+        if (!StringUtil.isEmpty(title)) {
+            postDetailTitle.setText(title);
+        }
     }
 
     private void initToolBar() {
@@ -54,9 +68,11 @@ public class PostDetailActivity extends AppActivity {
         switch (item.getItemId()) {
             case R.id.post_detail_refresh:
                 Log.e("menu", "refresh");
+                postDetailFragment.refresh();
                 break;
             case R.id.post_detail_collect:
                 Log.e("menu", "collect");
+                postDetailFragment.collection(postId);
                 break;
         }
         return super.onOptionsItemSelected(item);

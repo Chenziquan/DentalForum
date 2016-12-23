@@ -17,6 +17,10 @@ public interface RegisterNextContract {
 
         void setSendCode(String time);
 
+        void showPasswordNullError();
+
+        void showPasswordLengthError();
+
         void setCanSendCode();
 
         void setCanNotSendCode();
@@ -25,6 +29,6 @@ public interface RegisterNextContract {
     interface Presenter extends BasePresenter {
         void sendCode(String telnum);
 
-        void registerNext(String telnum, String code);
+        void registerNext(String telnum, String code, String passowrd);
     }
 }

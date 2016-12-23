@@ -14,6 +14,8 @@ public interface PostDataSource {
         void onLoadHeader(List<String> header);
 
         void onLoadPost(List<PostBean> posts);
+
+        void onLoadFinish();
     }
 
     void getPost(int page,int size,PostCallBack callBack);

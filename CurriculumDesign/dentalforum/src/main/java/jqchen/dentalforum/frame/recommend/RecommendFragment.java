@@ -26,9 +26,9 @@ import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder;
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
 import cn.bingoogolapple.refreshlayout.BGARefreshViewHolder;
 import jqchen.dentalforum.R;
-import jqchen.dentalforum.data.bean.ADListModel;
-import jqchen.dentalforum.library.BaseFragment;
+import jqchen.dentalforum.data.bean.RecommendBean;
 import jqchen.dentalforum.function.search.SearchActivity;
+import jqchen.dentalforum.library.BaseFragment;
 import jqchen.dentalforum.util.GlideUtil;
 
 /**
@@ -47,7 +47,7 @@ public class RecommendFragment extends BaseFragment implements RecommendContract
     private View networkErrorView;
     private Unbinder unbinder;
     private RecommendPresenter mPresenter;
-    private List<String> data;
+    private List<RecommendBean> data;
     private RecommendAdapter recommendAdapter;
     private View recommendHeader;
     private int page = 1;
@@ -120,19 +120,6 @@ public class RecommendFragment extends BaseFragment implements RecommendContract
         mPresenter.start();
     }
 
-    @Override
-    public void refresh(List<String> list) {
-        data.clear();
-        data.addAll(list);
-        recommendAdapter.notifyDataSetChanged();
-        recommendRefresh.endRefreshing();
-    }
-
-    @Override
-    public void load(List<String> list) {
-        data.addAll(list);
-        recommendAdapter.loadMoreComplete();
-    }
 
     @Override
     public void showError() {
@@ -151,7 +138,26 @@ public class RecommendFragment extends BaseFragment implements RecommendContract
     }
 
     @Override
-    public void setBanner(List<ADListModel.InfoBean> banner) {
+    public void refresh(List<RecommendBean> list) {
+        data.clear();
+        data.addAll(list);
+        recommendAdapter.notifyDataSetChanged();
+        recommendRefresh.endRefreshing();
+    }
+
+    @Override
+    public void load(List<RecommendBean> list) {
+        data.addAll(list);
+        recommendAdapter.loadMoreComplete();
+    }
+
+    @Override
+    public void onLoadFinish() {
+        recommendAdapter.loadMoreEnd();
+    }
+
+    @Override
+    public void setBanner(List<String> banner) {
         recommendBanner.setData(banner, null);
     }
 
@@ -205,7 +211,6 @@ public class RecommendFragment extends BaseFragment implements RecommendContract
 
     @Override
     public void fillBannerItem(BGABanner banner, View view, Object model, int position) {
-        GlideUtil.getInstance().loadImage(this.getContext(), (ImageView) view,
-                "http://114.55.64.30:8080/migocoo/img/migocooshow/" + ((ADListModel.InfoBean) model).getAd_pic(), false);
+        GlideUtil.getInstance().loadImage(this.getContext(), (ImageView) view, (String) model, false);
     }
 }

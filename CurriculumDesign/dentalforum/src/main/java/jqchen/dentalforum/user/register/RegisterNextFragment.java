@@ -28,6 +28,8 @@ public class RegisterNextFragment extends BaseFragment implements RegisterNextCo
     EditText registerNextCode;
     @BindView(R.id.register_next_send)
     TextView registerNextSend;
+    @BindView(R.id.register_next_passowrd)
+    EditText registerNextPassowrd;
     private Unbinder unbinder;
     private View networkErrorView;
     private String telnum;
@@ -83,7 +85,17 @@ public class RegisterNextFragment extends BaseFragment implements RegisterNextCo
 
     @Override
     public void setSendCode(String time) {
-        registerNextSend.setText(getString(R.string.send_coding) + "(" + time + ")");
+        registerNextSend.setText(getString(R.string.send_code_string, time));
+    }
+
+    @Override
+    public void showPasswordNullError() {
+        registerNextPassowrd.setError(getString(R.string.login_password_error));
+    }
+
+    @Override
+    public void showPasswordLengthError() {
+        registerNextPassowrd.setError(getString(R.string.password_length_error));
     }
 
     @Override
@@ -126,7 +138,7 @@ public class RegisterNextFragment extends BaseFragment implements RegisterNextCo
                 mPresenter.sendCode(telnum);
                 break;
             case R.id.register_next_submit:
-                mPresenter.registerNext(telnum, registerNextCode.getText().toString());
+                mPresenter.registerNext(telnum, registerNextCode.getText().toString(), registerNextPassowrd.getText().toString());
                 break;
         }
     }

@@ -36,6 +36,11 @@ public class PostsPresenter implements PostsContract.Presenter {
             }
 
             @Override
+            public void onLoadFinish() {
+                mView.loadFinish();
+            }
+
+            @Override
             public void onDataNotAvailable() {
                 mView.showError();
             }
@@ -53,6 +58,11 @@ public class PostsPresenter implements PostsContract.Presenter {
 
             @Override
             public void onLoadPost(List<PostBean> posts) {
+
+            }
+
+            @Override
+            public void onLoadFinish() {
 
             }
 

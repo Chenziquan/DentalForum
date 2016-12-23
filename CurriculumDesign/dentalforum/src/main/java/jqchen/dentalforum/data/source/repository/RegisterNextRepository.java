@@ -1,5 +1,6 @@
 package jqchen.dentalforum.data.source.repository;
 
+import jqchen.dentalforum.base.SimpleCallBack;
 import jqchen.dentalforum.data.source.RegisterNextDataSource;
 import jqchen.dentalforum.data.source.local.LocalRegisterNextDataSource;
 import jqchen.dentalforum.data.source.remote.RemoteRegisterNextDataSource;
@@ -29,13 +30,14 @@ public class RegisterNextRepository implements RegisterNextDataSource {
         INSTANCE = null;
     }
 
+
     @Override
-    public void sendCode(String telnum, RegisterSendCodeCallBack callBack) {
+    public void sendCode(String telnum, SimpleCallBack callBack) {
         localRegisterNextDataSource.sendCode(telnum, callBack);
     }
 
     @Override
-    public void registerNext(String telnum, String code, RegisterNextCallBack callBack) {
-        remoteRegisterNextDataSource.registerNext(telnum, code, callBack);
+    public void registerNext(String telnum, String code, String passowrd, RegisterNextCallBack callBack) {
+        remoteRegisterNextDataSource.registerNext(telnum, code, passowrd, callBack);
     }
 }

@@ -17,6 +17,8 @@ public interface PostsContract {
         void load(List<PostBean> posts);
 
         void setHeader(List<String> header);
+
+        void loadFinish();
     }
 
     interface Presenter extends BasePresenter {

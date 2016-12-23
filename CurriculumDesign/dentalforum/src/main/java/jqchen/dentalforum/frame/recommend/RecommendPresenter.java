@@ -2,7 +2,7 @@ package jqchen.dentalforum.frame.recommend;
 
 import java.util.List;
 
-import jqchen.dentalforum.data.bean.ADListModel;
+import jqchen.dentalforum.data.bean.RecommendBean;
 import jqchen.dentalforum.data.source.RecommendDataSource;
 import jqchen.dentalforum.data.source.repository.RecommendRepository;
 
@@ -12,56 +12,46 @@ import jqchen.dentalforum.data.source.repository.RecommendRepository;
  */
 public class RecommendPresenter implements RecommendContract.Presenter {
     private RecommendContract.View mView;
-    private RecommendRepository mRecommendResponsitory;
 
     public RecommendPresenter(RecommendContract.View mView) {
         this.mView = mView;
-        this.mRecommendResponsitory = new RecommendRepository();
     }
 
     @Override
     public void getRecommend(int page, int size, final boolean isRefresh) {
-        mRecommendResponsitory.getRecommend(page, size, new RecommendDataSource.LoadRecommendCallback() {
+        RecommendRepository.getInstance().getRecommend(page, size, new RecommendDataSource.LoadRecommendCallback() {
             @Override
-            public void onRecommendLoad(List<String> recommend) {
-                if (isRefresh) {
+            public void onRecommendLoad(List<RecommendBean> recommend) {
+                if (isRefresh){
                     mView.refresh(recommend);
-                } else {
+                }else {
                     mView.load(recommend);
                 }
-                mView.showNormal();
             }
 
             @Override
-            public void onBannerLoad(List<ADListModel.InfoBean> banner) {
-
+            public void onRecommendFinish() {
+                mView.onLoadFinish();
             }
 
             @Override
             public void onDataNotAvailable() {
-                if (isRefresh) {
-                    mView.showError();
-                }
+                mView.showError();
             }
         });
     }
 
     @Override
     public void getBanner() {
-        mRecommendResponsitory.getBanner(new RecommendDataSource.LoadRecommendCallback() {
+        RecommendRepository.getInstance().getBanner(new RecommendDataSource.LoadBannerCallBack() {
             @Override
-            public void onRecommendLoad(List<String> recommend) {
-
-            }
-
-            @Override
-            public void onBannerLoad(List<ADListModel.InfoBean> banner) {
+            public void onBannerLoad(List<String> banner) {
                 mView.setBanner(banner);
             }
 
             @Override
             public void onDataNotAvailable() {
-
+                mView.showError();
             }
         });
     }

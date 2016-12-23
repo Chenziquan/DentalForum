@@ -2,6 +2,7 @@ package jqchen.dentalforum.user.register;
 
 import android.os.CountDownTimer;
 
+import jqchen.dentalforum.base.SimpleCallBack;
 import jqchen.dentalforum.data.source.RegisterNextDataSource;
 import jqchen.dentalforum.data.source.repository.RegisterNextRepository;
 
@@ -30,23 +31,28 @@ public class RegisterNextPresenter implements RegisterNextContract.Presenter {
 
     @Override
     public void sendCode(String telnum) {
-        RegisterNextRepository.getInstance().sendCode(telnum, new RegisterNextDataSource.RegisterSendCodeCallBack() {
-            @Override
-            public void onError() {
-
-            }
-
+        RegisterNextRepository.getInstance().sendCode(telnum, new SimpleCallBack() {
             @Override
             public void onSuccess() {
                 mView.setCanNotSendCode();
                 countDownTimer.start();
             }
+
+            @Override
+            public void onFail() {
+
+            }
+
+            @Override
+            public void onDataNotAvailable() {
+
+            }
         });
     }
 
     @Override
-    public void registerNext(String telnum, String code) {
-        RegisterNextRepository.getInstance().registerNext(telnum, code, new RegisterNextDataSource.RegisterNextCallBack() {
+    public void registerNext(String telnum, String code, String passowrd) {
+        RegisterNextRepository.getInstance().registerNext(telnum, code, passowrd, new RegisterNextDataSource.RegisterNextCallBack() {
             @Override
             public void onCodeNullError() {
                 mView.showCodeNullError();
@@ -61,8 +67,24 @@ public class RegisterNextPresenter implements RegisterNextContract.Presenter {
             public void onRegisterSuccess() {
                 mView.registerSuccess();
             }
+
+            @Override
+            public void onPassowrdNullError() {
+                mView.showPasswordNullError();
+            }
+
+            @Override
+            public void onPasswordLengthError() {
+                mView.showPasswordLengthError();
+            }
+
+            @Override
+            public void onDataNotAvailable() {
+                mView.showError();
+            }
         });
     }
+
 
     @Override
     public void start() {

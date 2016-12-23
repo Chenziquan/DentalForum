@@ -5,11 +5,20 @@ package jqchen.dentalforum.data.bean;
  * Use to
  */
 public class UserBean {
+    private String id;
     private String name;
     private String integration;
     private String posts;
     private String wealth;
     private String collections;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

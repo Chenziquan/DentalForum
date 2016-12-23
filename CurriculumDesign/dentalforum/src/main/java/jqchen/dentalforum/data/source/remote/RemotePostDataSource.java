@@ -1,10 +1,14 @@
 package jqchen.dentalforum.data.source.remote;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import jqchen.dentalforum.data.bean.PostBean;
 import jqchen.dentalforum.data.source.PostDataSource;
+import jqchen.dentalforum.http.ForumRetrofit;
+import jqchen.dentalforum.http.ForumService;
+import rx.Observer;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by jqchen on 2016/12/9.
@@ -13,21 +17,31 @@ import jqchen.dentalforum.data.source.PostDataSource;
 public class RemotePostDataSource implements PostDataSource {
 
     @Override
-    public void getPost(int page, int size, PostCallBack callBack) {
-        List<PostBean> strings = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
-            PostBean postBean = new PostBean();
-            postBean.setTitle("帖子" + i);
-            postBean.setUname("陈军权");
-            postBean.setUgroup("达人");
-            postBean.setThem("主题");
-            postBean.setContent("帖子正文");
-            postBean.setTime("25s前");
-            postBean.setViewnum("20");
-            postBean.setCommentnum("33");
-            strings.add(postBean);
+    public void getPost(int page, int size, final PostCallBack callBack) {
+        if (page > 1) {
+            callBack.onLoadFinish();
+            return;
         }
-        callBack.onLoadPost(strings);
+        ForumRetrofit.getRetrofit().create(ForumService.class)
+                .getHomePosts()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<List<PostBean>>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        callBack.onDataNotAvailable();
+                    }
+
+                    @Override
+                    public void onNext(List<PostBean> postBeen) {
+                        callBack.onLoadPost(postBeen);
+                    }
+                });
     }
 
     @Override

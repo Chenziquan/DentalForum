@@ -4,7 +4,7 @@ import java.util.List;
 
 import jqchen.dentalforum.base.BasePresenter;
 import jqchen.dentalforum.base.BaseView;
-import jqchen.dentalforum.data.bean.CommentBean;
+import jqchen.dentalforum.data.bean.PostCommentBean;
 
 /**
  * Created by jqchen on 2016/12/19.
@@ -12,11 +12,11 @@ import jqchen.dentalforum.data.bean.CommentBean;
  */
 public interface PostReplyContract {
     interface View extends BaseView {
-        void setComment(CommentBean commentBean);
+        void setComment(PostCommentBean commentBean);
 
-        void setReplyRefresh(List<CommentBean.ReplyBean> replyBeen);
+        void setReplyRefresh(List<PostCommentBean.SecCommentBean> replyBeen);
 
-        void setReplyLoad(List<CommentBean.ReplyBean> replyBeen);
+        void setReplyLoad(List<PostCommentBean.SecCommentBean> replyBeen);
 
         void refresh();
 
@@ -28,7 +28,7 @@ public interface PostReplyContract {
 
         void getReply(int page, int size, boolean isRefresh);
 
-        void reply(int commentId, String content, List<CommentBean.ReplyBean> list);
+        void reply(int commentId, String content, List<PostCommentBean.SecCommentBean> list);
     }
 
 }

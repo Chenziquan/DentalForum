@@ -10,26 +10,26 @@ import java.util.List;
 import jqchen.dentalforum.R;
 import jqchen.dentalforum.app.MyApplication;
 import jqchen.dentalforum.common.DentalForumViewHolder;
-import jqchen.dentalforum.data.bean.CommentBean;
+import jqchen.dentalforum.data.bean.PostCommentBean;
 
 /**
  * Created by jqchen on 2016/12/17.
  * Use to
  */
-public class PostDetailAdapter extends BaseQuickAdapter<CommentBean, DentalForumViewHolder> {
-    public PostDetailAdapter(int layoutResId, List<CommentBean> data) {
+public class PostDetailAdapter extends BaseQuickAdapter<PostCommentBean, DentalForumViewHolder> {
+    public PostDetailAdapter(int layoutResId, List<PostCommentBean> data) {
         super(layoutResId, data);
     }
 
     @Override
-    protected void convert(DentalForumViewHolder dentalForumViewHolder, CommentBean commentBean) {
-        dentalForumViewHolder.setPortrait(R.id.post_detail_comment_portrait, commentBean.getuImage())
+    protected void convert(DentalForumViewHolder dentalForumViewHolder, PostCommentBean commentBean) {
+        dentalForumViewHolder.setPortrait(R.id.post_detail_comment_portrait, commentBean.getComment().getUimage())
 //                .setReply(R.id.post_detail_comment_reply, commentBean.getReplyBeen())
-                .setRecycler(R.id.post_detail_comment_reply, new LinearLayoutManager(MyApplication.getInstance()), new PostDetailReplyAdapter(R.layout.item_post_detail_reply, commentBean.getReplyBeen()))
-                .setText(R.id.post_detail_comment_name, commentBean.getuName())
-                .setText(R.id.post_detail_comment_group, commentBean.getuGroup())
-                .setText(R.id.post_detail_comment_time, commentBean.getTime())
-                .setText(R.id.post_detail_comment_content, commentBean.getContent());
+                .setRecycler(R.id.post_detail_comment_reply, new LinearLayoutManager(MyApplication.getInstance()), new PostDetailReplyAdapter(R.layout.item_post_detail_reply, commentBean.getSecComment()))
+                .setText(R.id.post_detail_comment_name, commentBean.getComment().getUserNickname())
+                .setText(R.id.post_detail_comment_group, commentBean.getComment().getUgroup())
+                .setText(R.id.post_detail_comment_time, commentBean.getComment().getCreateDate())
+                .setText(R.id.post_detail_comment_content, commentBean.getComment().getContent());
     }
 
     @Override

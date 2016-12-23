@@ -26,11 +26,12 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import jqchen.dentalforum.R;
-import jqchen.dentalforum.data.bean.CommentBean;
 import jqchen.dentalforum.data.bean.PostBean;
+import jqchen.dentalforum.data.bean.PostCommentBean;
 import jqchen.dentalforum.library.BaseFragment;
 import jqchen.dentalforum.post.detail.reply.PostReplyActivity;
 import jqchen.dentalforum.util.GlideUtil;
+import jqchen.dentalforum.util.ShowToast;
 
 /**
  * 帖子内容
@@ -57,22 +58,26 @@ public class PostDetailFragment extends BaseFragment implements PostDetailContra
     private TextView itemPostCommentnum;
 
     private Unbinder unbinder;
-    private List<CommentBean> list;
+    private List<PostCommentBean> list;
     private PostDetailAdapter postDetailAdapter;
     private View postDetailHeader, netwrokErrorView;
     private PostDetailPresenter mPresenter;
     private int page = 1;
     private int size = 10;
     private int postId;
+    private ShowToast mShowToast;
 
-    public static PostDetailFragment getInstance() {
-        return new PostDetailFragment();
+    public static PostDetailFragment getInstance(Bundle bundle) {
+        PostDetailFragment postDetailFragment = new PostDetailFragment();
+        postDetailFragment.setArguments(bundle);
+        return postDetailFragment;
     }
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
         unbinder = ButterKnife.bind(this, view);
         mPresenter = new PostDetailPresenter(this);
+        mShowToast = new ShowToast(this.getContext());
         initHeader();
         setListener();
     }
@@ -114,6 +119,7 @@ public class PostDetailFragment extends BaseFragment implements PostDetailContra
     @Override
     public void initData() {
         initAdapter();
+        postId = getArguments().getInt(getString(R.string.post_id));
         mPresenter.getPostDetail(postId);
         mPresenter.getComment(postId, page, size, true);
     }
@@ -139,9 +145,9 @@ public class PostDetailFragment extends BaseFragment implements PostDetailContra
         GlideUtil.getInstance().loadCircleImage(this.getContext(), itemPostImage, postDetail.getUimage());
         itemPostName.setText(postDetail.getUname());
         itemPostGroup.setText(postDetail.getUgroup());
-        itemPostThem.setText(postDetail.getThem());
-        itemPostTime.setText(postDetail.getTime());
-        itemPostTitle.setText(postDetail.getTitle());
+        itemPostThem.setText(postDetail.getModuleName());
+        itemPostTime.setText(postDetail.getCreateTime());
+        itemPostTitle.setText(postDetail.getName());
         itemPostContent.setText(postDetail.getContent());
         itemPostViewnum.setText(postDetail.getViewnum());
         itemPostCommentnum.setText(postDetail.getCommentnum());
@@ -156,14 +162,14 @@ public class PostDetailFragment extends BaseFragment implements PostDetailContra
     }
 
     @Override
-    public void setCommentRefresh(List<CommentBean> list) {
+    public void setCommentRefresh(List<PostCommentBean> list) {
         this.list.clear();
         this.list.addAll(list);
         postDetailAdapter.notifyDataSetChanged();
     }
 
     @Override
-    public void setCommentLoad(List<CommentBean> list) {
+    public void setCommentLoad(List<PostCommentBean> list) {
         this.list.addAll(list);
         postDetailAdapter.loadMoreComplete();
     }
@@ -186,6 +192,21 @@ public class PostDetailFragment extends BaseFragment implements PostDetailContra
     @Override
     public void setLike(boolean isLike) {
         postDetailLike.setChecked(isLike);
+    }
+
+    @Override
+    public void showCollectSuccess() {
+        mShowToast.show("收藏成功");
+    }
+
+    @Override
+    public void showCollectFail() {
+        mShowToast.show("收藏失败");
+    }
+
+    @Override
+    public void onLoadCommentFinish() {
+        this.postDetailAdapter.loadMoreEnd();
     }
 
     @Override
@@ -212,7 +233,7 @@ public class PostDetailFragment extends BaseFragment implements PostDetailContra
 
     @OnClick(R.id.post_detail_comment_submit)
     public void onClick() {
-        mPresenter.comment(1, postDetailInput.getText().toString(), list);
+        mPresenter.comment(postId, postDetailInput.getText().toString(), list);
     }
 
     @Override
@@ -237,5 +258,9 @@ public class PostDetailFragment extends BaseFragment implements PostDetailContra
                 break;
         }
         return false;
+    }
+
+    public void collection(int postId) {
+        mPresenter.postCollect(postId);
     }
 }

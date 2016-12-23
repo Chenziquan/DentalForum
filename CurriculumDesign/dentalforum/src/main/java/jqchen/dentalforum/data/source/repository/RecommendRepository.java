@@ -38,16 +38,12 @@ public class RecommendRepository implements RecommendDataSource {
         checkNotNull(page);
         checkNotNull(size);
         checkNotNull(callback);
-        localRecommendDataSource.getRecommend(page, size, callback);
+        this.remoteRecommendDataSource.getRecommend(page, size, callback);
     }
 
     @Override
-    public void getRecommend(LoadRecommendCallback callback) {
-        localRecommendDataSource.getRecommend(callback);
+    public void getBanner(LoadBannerCallBack callback) {
+        this.localRecommendDataSource.getBanner(callback);
     }
 
-    @Override
-    public void getBanner(LoadRecommendCallback callback) {
-        remoteRecommendDataSource.getBanner(callback);
-    }
 }

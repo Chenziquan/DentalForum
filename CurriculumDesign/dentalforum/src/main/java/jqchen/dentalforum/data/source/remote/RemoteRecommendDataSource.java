@@ -1,9 +1,8 @@
 package jqchen.dentalforum.data.source.remote;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
-import jqchen.dentalforum.data.bean.ADListModel;
+import jqchen.dentalforum.data.bean.RecommendBean;
 import jqchen.dentalforum.data.source.RecommendDataSource;
 import jqchen.dentalforum.http.ForumRetrofit;
 import jqchen.dentalforum.http.ForumService;
@@ -17,25 +16,17 @@ import rx.schedulers.Schedulers;
  */
 public class RemoteRecommendDataSource implements RecommendDataSource {
     @Override
-    public void getRecommend(int page, int size, LoadRecommendCallback callback) {
-
-    }
-
-    @Override
-    public void getRecommend(LoadRecommendCallback callback) {
-
-    }
-
-    @Override
-    public void getBanner(final LoadRecommendCallback callback) {
-        Map<String, String> map = new HashMap<>();
-        map.put("adInfo.ad_type", "7");
+    public void getRecommend(int page, int size, final LoadRecommendCallback callback) {
+        if (page > 1) {
+            callback.onRecommendFinish();
+            return;
+        }
         ForumRetrofit.getRetrofit()
                 .create(ForumService.class)
-                .getRecommendBanner(map)
+                .getRecommend()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ADListModel>() {
+                .subscribe(new Observer<List<RecommendBean>>() {
                     @Override
                     public void onCompleted() {
 
@@ -47,9 +38,16 @@ public class RemoteRecommendDataSource implements RecommendDataSource {
                     }
 
                     @Override
-                    public void onNext(ADListModel adListModel) {
-                        callback.onBannerLoad(adListModel.getInfo());
+                    public void onNext(List<RecommendBean> recommendBeen) {
+                        recommendBeen.get(0).setPicture("http://image101.360doc.com/DownloadImg/2016/11/0218/83610116_3.jpg");
+                        callback.onRecommendLoad(recommendBeen);
                     }
                 });
     }
+
+    @Override
+    public void getBanner(LoadBannerCallBack callback) {
+
+    }
+
 }

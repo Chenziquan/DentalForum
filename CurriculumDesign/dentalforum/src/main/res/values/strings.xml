@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DentalForum</string>
+    <string name="app_name">牙科论坛</string>
 
     <string name="add_post">写帖子</string>
 
@@ -23,6 +23,8 @@
     <string name="login_username_error">用户名不能为空</string>
     <string name="login_password_error">密码不能为空</string>
 
+    <string name="password_length_error">密码长度不能小于6位</string>
+
     <string name="navigatesigin_login">登录</string>
     <string name="navigatesigin_register">注册</string>
     <string name="navigatesigin_forget">忘记密码?</string>
@@ -41,11 +43,12 @@
     <string name="register_tel_format_error">电话号码格式不正确</string>
 
     <string name="register_next_a">已发送一条带验证码的短信至</string>
-    <string name="register_submit">验证</string>
+    <string name="register_submit">注册</string>
     <string name="send_coding">正在获取</string>
     <string name="send_code">重新获取</string>
 
     <string name="input_code_hint">请输入验证码</string>
+    <string name="input_passowrd_hint">请输入密码</string>
 
     <string name="code_null_error">验证码不能为空</string>
     <string name="code_error">验证码不正确</string>
@@ -103,6 +106,13 @@
         ]]>
     </Data></string>
 
+    <string name="send_code_string">
+        正在获取
+        (
+        %1$s
+        )
+
+    </string>
 
     <string name="post_detail_comment_submit">回复</string>
     <string name="post_detail_reply_null_error">请输入内容</string>
@@ -118,6 +128,9 @@
 
     <string name="user_posts_title">我的帖子</string>
     <string name="user_collection_title">我的收藏</string>
+
+    <string name="post_id">post_id</string>
+    <string name="post_title">post_title</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

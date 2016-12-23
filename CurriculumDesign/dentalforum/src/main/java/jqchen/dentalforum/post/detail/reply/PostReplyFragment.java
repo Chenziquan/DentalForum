@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import jqchen.dentalforum.R;
-import jqchen.dentalforum.data.bean.CommentBean;
+import jqchen.dentalforum.data.bean.PostCommentBean;
 import jqchen.dentalforum.library.BaseFragment;
 import jqchen.dentalforum.util.GlideUtil;
 
@@ -41,7 +41,7 @@ public class PostReplyFragment extends BaseFragment implements PostReplyContract
     private TextView postReplyContent;
 
     private Unbinder unbinder;
-    private CommentBean commentBean;
+    private PostCommentBean commentBean;
     private PostReplyAdapter postReplyAdapter;
     private PostReplyPresenter mPresenter;
     private View networkErrorView, postReplyHeader;
@@ -84,16 +84,16 @@ public class PostReplyFragment extends BaseFragment implements PostReplyContract
     }
 
     private void setHeader() {
-        GlideUtil.getInstance().loadCircleImage(this.getContext(), postReplyPortrait, commentBean.getuImage());
-        postReplyName.setText(commentBean.getuName());
-        postReplyGroup.setText(commentBean.getuGroup());
-        postReplyTime.setText(commentBean.getTime());
-        postReplyContent.setText(commentBean.getContent());
+        GlideUtil.getInstance().loadCircleImage(this.getContext(), postReplyPortrait, commentBean.getComment().getUserHeadpic());
+        postReplyName.setText(commentBean.getComment().getUserNickname());
+        postReplyGroup.setText(commentBean.getComment().getUgroup());
+        postReplyTime.setText(commentBean.getComment().getCreateDate());
+        postReplyContent.setText(commentBean.getComment().getContent());
     }
 
     private void setAdapter() {
         postReplyRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        postReplyAdapter = new PostReplyAdapter(R.layout.item_post_reply, commentBean.getReplyBeen());
+        postReplyAdapter = new PostReplyAdapter(R.layout.item_post_reply, commentBean.getSecComment());
         postReplyAdapter.addHeaderView(postReplyHeader);
         postReplyRecycler.setAdapter(postReplyAdapter);
     }
@@ -106,21 +106,21 @@ public class PostReplyFragment extends BaseFragment implements PostReplyContract
 
     @OnClick(R.id.post_reply_submit)
     public void onClick() {
-        mPresenter.reply(1, postReplyInput.getText().toString(), commentBean.getReplyBeen());
+        mPresenter.reply(commentBean.getComment().getId(), postReplyInput.getText().toString(), commentBean.getSecComment());
     }
 
     @Override
-    public void setComment(CommentBean commentBean) {
-
-    }
-
-    @Override
-    public void setReplyRefresh(List<CommentBean.ReplyBean> replyBeen) {
+    public void setComment(PostCommentBean commentBean) {
 
     }
 
     @Override
-    public void setReplyLoad(List<CommentBean.ReplyBean> replyBeen) {
+    public void setReplyRefresh(List<PostCommentBean.SecCommentBean> replyBeen) {
+
+    }
+
+    @Override
+    public void setReplyLoad(List<PostCommentBean.SecCommentBean> replyBeen) {
 
     }
 

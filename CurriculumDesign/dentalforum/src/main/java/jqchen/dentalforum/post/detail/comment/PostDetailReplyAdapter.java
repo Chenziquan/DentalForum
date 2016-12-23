@@ -15,31 +15,20 @@ import java.util.List;
 import jqchen.dentalforum.R;
 import jqchen.dentalforum.app.MyApplication;
 import jqchen.dentalforum.common.DentalForumViewHolder;
-import jqchen.dentalforum.data.bean.CommentBean;
+import jqchen.dentalforum.data.bean.PostCommentBean;
 
 /**
  * Created by jqchen on 2016/12/19.
  * Use to
  */
-public class PostDetailReplyAdapter extends BaseQuickAdapter<CommentBean.ReplyBean, BaseViewHolder> {
-    private List<CommentBean.ReplyBean> list;
+public class PostDetailReplyAdapter extends BaseQuickAdapter<PostCommentBean.SecCommentBean, BaseViewHolder> {
+    private List<PostCommentBean.SecCommentBean> list;
     private int LayoutId;
 
-    public PostDetailReplyAdapter(int layoutResId, List<CommentBean.ReplyBean> data) {
+    public PostDetailReplyAdapter(int layoutResId, List<PostCommentBean.SecCommentBean> data) {
         super(layoutResId, data);
         LayoutId = layoutResId;
         list = data;
-    }
-
-    @Override
-    protected void convert(BaseViewHolder baseViewHolder, CommentBean.ReplyBean replyBean) {
-        if (baseViewHolder instanceof ReplyEndViewHolder) {
-            ((TextView) baseViewHolder.getView(R.id.item_post_detail_reply)).setGravity(Gravity.CENTER);
-            baseViewHolder.setText(R.id.item_post_detail_reply, "更多" + (list.size() - 2) + "条回复");
-
-        } else if (baseViewHolder instanceof DentalForumViewHolder) {
-            baseViewHolder.setText(R.id.item_post_detail_reply, Html.fromHtml(MyApplication.getInstance().getString(R.string.post_detail_reply, replyBean.getuName(), replyBean.getpName()) + replyBean.getContent()));
-        }
     }
 
     @Override
@@ -51,6 +40,17 @@ public class PostDetailReplyAdapter extends BaseQuickAdapter<CommentBean.ReplyBe
                 return new DentalForumViewHolder(LayoutInflater.from(MyApplication.getInstance()).inflate(LayoutId, parent, false));
         }
         return super.onCreateViewHolder(parent, viewType);
+    }
+
+    @Override
+    protected void convert(BaseViewHolder baseViewHolder, PostCommentBean.SecCommentBean secCommentBean) {
+        if (baseViewHolder instanceof ReplyEndViewHolder) {
+            ((TextView) baseViewHolder.getView(R.id.item_post_detail_reply)).setGravity(Gravity.CENTER);
+            baseViewHolder.setText(R.id.item_post_detail_reply, "更多" + (list.size() - 2) + "条回复");
+
+        } else if (baseViewHolder instanceof DentalForumViewHolder) {
+            baseViewHolder.setText(R.id.item_post_detail_reply, Html.fromHtml(MyApplication.getInstance().getString(R.string.post_detail_reply, secCommentBean.getUserNickname(), secCommentBean.getToUserNickname()) + secCommentBean.getContent()));
+        }
     }
 
     @Override

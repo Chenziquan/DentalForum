@@ -19,12 +19,12 @@ import butterknife.OnClick;
 import jqchen.dentalforum.R;
 import jqchen.dentalforum.common.TabPagerAdapter;
 import jqchen.dentalforum.frame.posts.PostsFragment;
+import jqchen.dentalforum.frame.recommend.RecommendFragment;
+import jqchen.dentalforum.frame.user.UserFragment;
+import jqchen.dentalforum.function.search.SearchActivity;
 import jqchen.dentalforum.library.AppActivity;
 import jqchen.dentalforum.library.BaseFragment;
 import jqchen.dentalforum.post.post.them.PostThemActivity;
-import jqchen.dentalforum.user.navigatesigin.NavigateSiginActivity;
-import jqchen.dentalforum.frame.recommend.RecommendFragment;
-import jqchen.dentalforum.frame.user.UserFragment;
 
 public class HomeActivity extends AppActivity {
 
@@ -120,8 +120,8 @@ public class HomeActivity extends AppActivity {
                 Snackbar.make(fab, getString(R.string.home_setup), Snackbar.LENGTH_LONG).show();
                 break;
             case R.id.home_search:
-                Snackbar.make(fab, getString(R.string.home_search), Snackbar.LENGTH_LONG).show();
-                startActivity(new Intent(HomeActivity.this, NavigateSiginActivity.class));
+//                Snackbar.make(fab, getString(R.string.home_search), Snackbar.LENGTH_LONG).show();
+                startActivity(new Intent(HomeActivity.this, SearchActivity.class));
                 break;
             case R.id.fab:
 //                Snackbar.make(fab, getString(R.string.add_post), Snackbar.LENGTH_LONG).show();

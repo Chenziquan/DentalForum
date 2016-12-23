@@ -27,7 +27,6 @@ import jqchen.dentalforum.common.LinearItemDecoration;
 import jqchen.dentalforum.data.bean.PostBean;
 import jqchen.dentalforum.library.BaseFragment;
 import jqchen.dentalforum.post.detail.comment.PostDetailActivity;
-import jqchen.dentalforum.util.ToastUtil;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -90,14 +89,16 @@ public class PostsFragment extends BaseFragment implements PostsContract.View, B
         postHeaderRecycler.addOnItemTouchListener(new OnItemClickListener() {
             @Override
             public void SimpleOnItemClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
-                ToastUtil.showLong(getContext(), "帖子头部");
+//                ToastUtil.showLong(getContext(), "帖子头部");
             }
         });
         postRecycler.addOnItemTouchListener(new OnItemClickListener() {
             @Override
             public void SimpleOnItemClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
-                ToastUtil.showLong(getContext(), "帖子内容");
+//                ToastUtil.showLong(getContext(), "帖子内容");
                 Intent intent = new Intent(getHoldingActivity(), PostDetailActivity.class);
+                intent.putExtra(getString(R.string.post_id), posts.get(i).getId());
+                intent.putExtra(getString(R.string.post_title), posts.get(i).getName());
                 startActivity(intent);
             }
         });
@@ -107,7 +108,6 @@ public class PostsFragment extends BaseFragment implements PostsContract.View, B
     private void initHeader() {
         postHeader = LayoutInflater.from(this.getContext()).inflate(R.layout.post_header, null);
         postHeaderRecycler = (RecyclerView) postHeader.findViewById(R.id.post_header_recycler);
-
     }
 
     private void setAdapter() {
@@ -148,6 +148,11 @@ public class PostsFragment extends BaseFragment implements PostsContract.View, B
         this.header.clear();
         this.header.addAll(header);
         this.postsHeaderAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void loadFinish() {
+        this.postsAdapter.loadMoreEnd();
     }
 
     @Override

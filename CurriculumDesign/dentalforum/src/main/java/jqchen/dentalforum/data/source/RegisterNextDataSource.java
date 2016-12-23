@@ -1,25 +1,27 @@
 package jqchen.dentalforum.data.source;
 
+import jqchen.dentalforum.base.BaseCallBack;
+import jqchen.dentalforum.base.SimpleCallBack;
+
 /**
  * Created by jqchen on 2016/12/5.
  * Use to
  */
 public interface RegisterNextDataSource {
-    interface RegisterNextCallBack {
+    interface RegisterNextCallBack extends BaseCallBack {
         void onCodeNullError();
 
         void onCodeError();
 
         void onRegisterSuccess();
+
+        void onPassowrdNullError();
+
+        void onPasswordLengthError();
+
     }
 
-    interface RegisterSendCodeCallBack {
-        void onError();
+    void sendCode(String telnum, SimpleCallBack callBack);
 
-        void onSuccess();
-    }
-
-    void sendCode(String telnum, RegisterSendCodeCallBack callBack);
-
-    void registerNext(String telnum, String code, RegisterNextCallBack callBack);
+    void registerNext(String telnum, String code, String passowrd, RegisterNextCallBack callBack);
 }
