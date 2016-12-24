@@ -24,6 +24,8 @@ public interface RegisterNextContract {
         void setCanSendCode();
 
         void setCanNotSendCode();
+
+        void showRegisterFail();
     }
 
     interface Presenter extends BasePresenter {

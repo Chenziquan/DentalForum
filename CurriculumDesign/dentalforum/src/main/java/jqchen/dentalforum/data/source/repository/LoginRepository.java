@@ -30,8 +30,9 @@ public class LoginRepository implements LoginDataSource {
         INSTANCE = null;
     }
 
+
     @Override
-    public void getUsername(LoginCallback callback) {
+    public void getUsername(GetUsernameCallBack callback) {
         localLoginDataSource.getUsername(callback);
     }
 

@@ -15,6 +15,8 @@ public interface RegisterNextDataSource {
 
         void onRegisterSuccess();
 
+        void onRegisterFail();
+
         void onPassowrdNullError();
 
         void onPasswordLengthError();

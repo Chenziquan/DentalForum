@@ -16,25 +16,10 @@ public class LoginPresenter implements LoginContract.Presenter {
 
     @Override
     public void getUsername() {
-        LoginRepository.getInstance().getUsername(new LoginDataSource.LoginCallback() {
+        LoginRepository.getInstance().getUsername(new LoginDataSource.GetUsernameCallBack() {
             @Override
             public void onGetUsername(String username) {
                 mView.setUsername(username);
-            }
-
-            @Override
-            public void onUsernameError() {
-
-            }
-
-            @Override
-            public void onPasswordError() {
-
-            }
-
-            @Override
-            public void onSuccess() {
-
             }
 
             @Override
@@ -47,8 +32,10 @@ public class LoginPresenter implements LoginContract.Presenter {
     @Override
     public void login(String username, String password) {
         LoginRepository.getInstance().login(username, password, new LoginDataSource.LoginCallback() {
+
             @Override
-            public void onGetUsername(String username) {
+            public void onFail() {
+                mView.showLoginFail();
             }
 
             @Override

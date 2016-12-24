@@ -1,6 +1,5 @@
 package jqchen.dentalforum.data.source.remote;
 
-import jqchen.dentalforum.app.MyApplication;
 import jqchen.dentalforum.base.SimpleCallBack;
 import jqchen.dentalforum.data.bean.UserBean;
 import jqchen.dentalforum.data.preference.Preference;
@@ -11,13 +10,13 @@ import jqchen.dentalforum.data.source.UserDataSource;
  * Use to
  */
 public class RemoteUserDataSource implements UserDataSource {
-    Preference preference = new Preference(MyApplication.getInstance());
+    Preference preference = Preference.getInstance();
 
     @Override
     public void GetSignStatus(UserCallBack callBack) {
         if (preference.getSignStatus()) {
             UserBean userBean = new UserBean();
-            userBean.setName(preference.getUserName());
+            userBean.setPhone(preference.getUserTel());
             userBean.setIntegration("1212");
             userBean.setPosts("11");
             userBean.setWealth("22");

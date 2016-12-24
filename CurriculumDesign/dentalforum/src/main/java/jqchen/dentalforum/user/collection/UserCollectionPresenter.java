@@ -2,7 +2,7 @@ package jqchen.dentalforum.user.collection;
 
 import java.util.List;
 
-import jqchen.dentalforum.data.bean.UserCollectionBean;
+import jqchen.dentalforum.data.bean.PostBean;
 import jqchen.dentalforum.data.source.UserCollectionDataSource;
 import jqchen.dentalforum.data.source.repository.UserCollectionRepository;
 
@@ -21,13 +21,18 @@ public class UserCollectionPresenter implements UserCollectionContract.Presenter
     public void getUserCollection(int page, int size, final boolean isRefresh) {
         UserCollectionRepository.getInstance().getUserCollection(page, size, new UserCollectionDataSource.UserCollectionCallBack() {
             @Override
-            public void onLoadUserCollection(List<UserCollectionBean> list) {
+            public void onLoadUserCollection(List<PostBean> list) {
                 if (isRefresh) {
                     mView.userCollectionRefresh(list);
                 } else {
                     mView.userCollectionLoad(list);
                 }
                 mView.showError();
+            }
+
+            @Override
+            public void onLoadFinish() {
+                mView.onLoadFinish();
             }
 
             @Override

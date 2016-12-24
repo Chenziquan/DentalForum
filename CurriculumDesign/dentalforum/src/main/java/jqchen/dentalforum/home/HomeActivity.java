@@ -22,6 +22,7 @@ import jqchen.dentalforum.frame.posts.PostsFragment;
 import jqchen.dentalforum.frame.recommend.RecommendFragment;
 import jqchen.dentalforum.frame.user.UserFragment;
 import jqchen.dentalforum.function.search.SearchActivity;
+import jqchen.dentalforum.function.video.VideoActivity;
 import jqchen.dentalforum.library.AppActivity;
 import jqchen.dentalforum.library.BaseFragment;
 import jqchen.dentalforum.post.post.them.PostThemActivity;
@@ -117,7 +118,8 @@ public class HomeActivity extends AppActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.home_setup:
-                Snackbar.make(fab, getString(R.string.home_setup), Snackbar.LENGTH_LONG).show();
+//                Snackbar.make(fab, getString(R.string.home_setup), Snackbar.LENGTH_LONG).show();
+                startActivity(new Intent(HomeActivity.this, VideoActivity.class));
                 break;
             case R.id.home_search:
 //                Snackbar.make(fab, getString(R.string.home_search), Snackbar.LENGTH_LONG).show();

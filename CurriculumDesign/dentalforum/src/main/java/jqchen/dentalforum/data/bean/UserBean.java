@@ -6,11 +6,20 @@ package jqchen.dentalforum.data.bean;
  */
 public class UserBean {
     private String id;
-    private String name;
+    private String phone;
     private String integration;
     private String posts;
     private String wealth;
     private String collections;
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public String getId() {
         return id;
@@ -20,12 +29,12 @@ public class UserBean {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getIntegration() {

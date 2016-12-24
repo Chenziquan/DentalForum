@@ -5,7 +5,6 @@ import android.text.TextUtils;
 
 import java.util.Map;
 
-import jqchen.dentalforum.app.MyApplication;
 import jqchen.dentalforum.base.SimpleCallBack;
 import jqchen.dentalforum.data.bean.UserBean;
 import jqchen.dentalforum.data.preference.Preference;
@@ -62,11 +61,15 @@ public class RemoteRegisterNextDataSource implements RegisterNextDataSource {
 
                     @Override
                     public void onNext(UserBean userBean) {
-                        Preference preference = new Preference(MyApplication.getInstance());
+                        if (StringUtil.isEmpty(userBean.getId())){
+                            callBack.onRegisterFail();
+                            return;
+                        }
+                        Preference preference = Preference.getInstance();
                         preference.setUserId(userBean.getId());
-                        preference.setUserName(userBean.getName());
+                        preference.setUserName(userBean.getPhone());
                         preference.setSignStatus(true);
-                        preference.setUserTel(userBean.getName());
+                        preference.setUserTel(userBean.getPhone());
                         callBack.onRegisterSuccess();
                     }
                 });

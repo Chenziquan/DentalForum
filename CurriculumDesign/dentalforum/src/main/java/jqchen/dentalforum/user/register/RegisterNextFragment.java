@@ -15,6 +15,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import jqchen.dentalforum.R;
 import jqchen.dentalforum.library.BaseFragment;
+import jqchen.dentalforum.util.ShowToast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,6 +35,7 @@ public class RegisterNextFragment extends BaseFragment implements RegisterNextCo
     private View networkErrorView;
     private String telnum;
     private RegisterNextPresenter mPresenter;
+    private ShowToast mShowToast;
 
     public RegisterNextFragment() {
         // Required empty public constructor
@@ -47,6 +49,7 @@ public class RegisterNextFragment extends BaseFragment implements RegisterNextCo
     protected void initView(View view, Bundle savedInstanceState) {
         unbinder = ButterKnife.bind(this, view);
         mPresenter = new RegisterNextPresenter(this);
+        mShowToast = new ShowToast(this.getContext());
     }
 
     @Override
@@ -107,6 +110,11 @@ public class RegisterNextFragment extends BaseFragment implements RegisterNextCo
     @Override
     public void setCanNotSendCode() {
         registerNextSend.setClickable(false);
+    }
+
+    @Override
+    public void showRegisterFail() {
+        mShowToast.show(getString(R.string.register_fail));
     }
 
     @Override

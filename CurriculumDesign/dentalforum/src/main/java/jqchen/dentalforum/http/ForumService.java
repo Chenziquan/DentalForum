@@ -12,6 +12,7 @@ import jqchen.dentalforum.data.bean.UserBean;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import rx.Observable;
 
@@ -43,4 +44,7 @@ public interface ForumService {
 
     @GET("api/comment/selComment/{postId}")
     Observable<List<PostCommentBean>> getPostComment(@Path("postId") int postId);
+
+    @GET("api/post/collect/selCollect")
+    Observable<List<PostBean>> getUserCollection(@Query("userId") String uerId);
 }

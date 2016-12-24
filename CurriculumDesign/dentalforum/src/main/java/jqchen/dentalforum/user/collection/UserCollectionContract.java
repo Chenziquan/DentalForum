@@ -4,7 +4,7 @@ import java.util.List;
 
 import jqchen.dentalforum.base.BasePresenter;
 import jqchen.dentalforum.base.BaseView;
-import jqchen.dentalforum.data.bean.UserCollectionBean;
+import jqchen.dentalforum.data.bean.PostBean;
 
 /**
  * Created by jqchen on 2016/12/21.
@@ -12,9 +12,11 @@ import jqchen.dentalforum.data.bean.UserCollectionBean;
  */
 public interface UserCollectionContract {
     interface View extends BaseView {
-        void userCollectionRefresh(List<UserCollectionBean> list);
+        void userCollectionRefresh(List<PostBean> list);
 
-        void userCollectionLoad(List<UserCollectionBean> list);
+        void userCollectionLoad(List<PostBean> list);
+
+        void onLoadFinish();
     }
 
     interface Presenter extends BasePresenter {

@@ -95,7 +95,7 @@ public class UserFragment extends BaseFragment implements UserContract.View {
     public void showSignIn(UserBean bean) {
         userSignIn.setVisibility(View.VISIBLE);
         userSignOut.setVisibility(View.GONE);
-        userSignInName.setText(bean.getName());
+        userSignInName.setText(bean.getPhone());
         userSignInIntegration.setText(bean.getIntegration());
         userNumPosts.setText(bean.getPosts());
         userNumWealth.setText(bean.getWealth());

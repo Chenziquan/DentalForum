@@ -7,8 +7,11 @@ import jqchen.dentalforum.base.BaseCallBack;
  * Use to
  */
 public interface LoginDataSource {
-    interface LoginCallback extends BaseCallBack{
+    interface GetUsernameCallBack extends BaseCallBack{
         void onGetUsername(String username);
+    }
+    interface LoginCallback extends BaseCallBack{
+        void onFail();
 
         void onUsernameError();
 
@@ -18,7 +21,7 @@ public interface LoginDataSource {
 
     }
 
-    void getUsername(LoginCallback callback);
+    void getUsername(GetUsernameCallBack callback);
 
     void login(String username, String password, LoginCallback callback);
 }

@@ -69,6 +69,11 @@ public class RegisterNextPresenter implements RegisterNextContract.Presenter {
             }
 
             @Override
+            public void onRegisterFail() {
+                mView.showRegisterFail();
+            }
+
+            @Override
             public void onPassowrdNullError() {
                 mView.showPasswordNullError();
             }

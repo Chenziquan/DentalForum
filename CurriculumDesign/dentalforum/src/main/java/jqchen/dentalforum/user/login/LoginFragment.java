@@ -12,6 +12,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import jqchen.dentalforum.R;
 import jqchen.dentalforum.library.BaseFragment;
+import jqchen.dentalforum.util.ShowToast;
 import jqchen.dentalforum.widget.ClearableEditText;
 
 /**
@@ -29,6 +30,7 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
     ClearableEditText loginPassword;
     private Unbinder unbinder;
     private View networkErrorView;
+    private ShowToast mShowToast;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -42,6 +44,7 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
     protected void initView(View view, Bundle savedInstanceState) {
         unbinder = ButterKnife.bind(this, view);
         mPresenter = new LoginPresenter(this);
+        mShowToast = new ShowToast(this.getContext());
 
     }
 
@@ -93,6 +96,11 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
     @Override
     public void navigateToHome() {
         getActivity().finish();
+    }
+
+    @Override
+    public void showLoginFail() {
+        mShowToast.show(this.getContext().getString(R.string.login_fail));
     }
 
     @Override

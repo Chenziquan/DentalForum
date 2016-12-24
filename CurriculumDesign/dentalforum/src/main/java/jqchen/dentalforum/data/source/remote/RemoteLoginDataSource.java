@@ -5,7 +5,6 @@ import android.text.TextUtils;
 
 import java.util.Map;
 
-import jqchen.dentalforum.app.MyApplication;
 import jqchen.dentalforum.data.bean.UserBean;
 import jqchen.dentalforum.data.preference.Preference;
 import jqchen.dentalforum.data.source.LoginDataSource;
@@ -20,13 +19,14 @@ import rx.schedulers.Schedulers;
  * Use to
  */
 public class RemoteLoginDataSource implements LoginDataSource {
+
     @Override
-    public void getUsername(LoginCallback callback) {
+    public void getUsername(GetUsernameCallBack callback) {
 
     }
 
     @Override
-    public void login(String username, String password, final LoginCallback callback) {
+    public void login(final String username, String password, final LoginCallback callback) {
         if (TextUtils.isEmpty(username)) {
             callback.onUsernameError();
             return;
@@ -35,9 +35,9 @@ public class RemoteLoginDataSource implements LoginDataSource {
             callback.onPasswordError();
             return;
         }
-        Map<String,String> map = new ArrayMap<>();
-        map.put("phone",username);
-        map.put("password",password);
+        Map<String, String> map = new ArrayMap<>();
+        map.put("phone", username);
+        map.put("password", password);
         ForumRetrofit.getRetrofit()
                 .create(ForumService.class)
                 .login(map)
@@ -56,10 +56,13 @@ public class RemoteLoginDataSource implements LoginDataSource {
 
                     @Override
                     public void onNext(UserBean userBean) {
-                        callback.onSuccess();
-                        Preference preference = new Preference(MyApplication.getInstance());
+                        if (TextUtils.isEmpty(userBean.getId())) {
+                            callback.onFail();
+                            return;
+                        }
+                        Preference preference = Preference.getInstance();
                         preference.setSignStatus(true);
-                        preference.setUserName(userBean.getName());
+                        preference.setUserTel(userBean.getPhone());
                         preference.setUserId(userBean.getId());
                         callback.onSuccess();
                     }

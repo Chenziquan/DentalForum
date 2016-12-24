@@ -47,4 +47,5 @@ dependencies {
     compile 'cn.finalteam.rxgalleryfinal:library:0.0.3'
     compile files('libs/aliyun-oss-sdk-android-2.3.0.jar')
     compile 'org.apache.directory.studio:org.apache.commons.codec:1.8'
+    compile 'fm.jiecao:jiecaovideoplayer:4.8.3'
 }

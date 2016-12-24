@@ -19,7 +19,7 @@ import butterknife.Unbinder;
 import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder;
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
 import jqchen.dentalforum.R;
-import jqchen.dentalforum.data.bean.UserCollectionBean;
+import jqchen.dentalforum.data.bean.PostBean;
 import jqchen.dentalforum.library.BaseFragment;
 
 /**
@@ -36,7 +36,7 @@ public class UserCollectionFragment extends BaseFragment implements UserCollecti
     BGARefreshLayout userCollectionRefresh;
 
     private Unbinder unbinder;
-    private List<UserCollectionBean> list;
+    private List<PostBean> list;
     private UserCollectionAdapter userCollectionAdapter;
     private int page = 1, size = 10;
     private UserCollectionPresenter mPresenter;
@@ -90,7 +90,7 @@ public class UserCollectionFragment extends BaseFragment implements UserCollecti
     }
 
     @Override
-    public void userCollectionRefresh(List<UserCollectionBean> list) {
+    public void userCollectionRefresh(List<PostBean> list) {
         this.list.clear();
         this.list.addAll(list);
         userCollectionAdapter.notifyDataSetChanged();
@@ -98,9 +98,14 @@ public class UserCollectionFragment extends BaseFragment implements UserCollecti
     }
 
     @Override
-    public void userCollectionLoad(List<UserCollectionBean> list) {
+    public void userCollectionLoad(List<PostBean> list) {
         this.list.addAll(list);
         userCollectionAdapter.loadMoreComplete();
+    }
+
+    @Override
+    public void onLoadFinish() {
+        userCollectionAdapter.loadMoreEnd();
     }
 
     @Override

@@ -16,6 +16,8 @@ public interface LoginContract {
         void showPasswordError();
 
         void navigateToHome();
+
+        void showLoginFail();
     }
 
     interface Presenter extends BasePresenter {

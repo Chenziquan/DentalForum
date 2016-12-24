@@ -3,6 +3,8 @@ package jqchen.dentalforum.data.preference;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import jqchen.dentalforum.app.MyApplication;
+
 /**
  * Created by jqchen on 2016/12/12.
  * Use to
@@ -12,6 +14,9 @@ public class Preference {
 
     public Preference(Context context) {
         preferences = context.getSharedPreferences(PreferenceHelper.ShareName, Context.MODE_PRIVATE);
+    }
+    public static Preference getInstance(){
+        return new Preference(MyApplication.getInstance());
     }
 
     public String getUserId() {
